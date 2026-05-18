@@ -1,237 +1,301 @@
 <!doctype html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>openyks — YKS'yi veriyle çalış</title>
-<meta name="description" content="Geçmiş YKS sorularını çöz, denemelerini analiz et, sıradaki çalışma adımını gör. Hesapsız, ücretsiz, tarayıcında." />
-<meta name="theme-color" content="#0b1220" />
-<meta property="og:title" content="openyks — YKS'yi veriyle çalış" />
-<meta property="og:description" content="Geçmiş soruları çöz, denemeni analiz et, sıradaki adımı gör. Hesapsız, ücretsiz." />
-<meta property="og:type" content="website" />
-<link rel="canonical" href="https://mekkaraliwork.github.io/openyks/" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { theme: { extend: { colors: {
-    ink: '#0b1220', paper: '#f7f7f5', brand: '#2dd4bf', brand2: '#22d3ee'
-  }, fontFamily: { sans: ['Inter','system-ui','sans-serif'] } } } }
-</script>
-<style>
-  html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-  .skip{position:absolute;left:-9999px}
-  .skip:focus{left:1rem;top:1rem;background:#fff;color:#000;padding:.5rem .75rem;border-radius:.5rem;z-index:50}
-  details>summary{list-style:none;cursor:pointer}
-  details>summary::-webkit-details-marker{display:none}
-  details[open] .chev{transform:rotate(180deg)}
-  .chev{transition:transform .2s}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0f17" />
+  <title>openyks — YKS'yi veriyle çalış</title>
+  <meta name="description" content="Geçmiş YKS sorularını çöz, denemelerini analiz et, sıradaki çalışma adımını gör. Ücretsiz, reklamsız, hesapsız. Tarayıcında çalışır." />
+  <meta property="og:title" content="openyks — YKS'yi veriyle çalış" />
+  <meta property="og:description" content="Geçmiş sorular, interaktif denemeler ve kişiye özel analiz. Hesapsız, ücretsiz, açık kaynak." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230ea5e9'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='ui-sans-serif,system-ui' font-size='30' font-weight='800' fill='white'%3Eo%3C/text%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica','Arial','sans-serif'] },
+          colors: {
+            ink: { 950:'#070a10', 900:'#0b0f17', 800:'#111827', 700:'#1f2937' },
+            brand: { 50:'#eef9ff', 100:'#d9f1ff', 200:'#b6e4ff', 300:'#83d2ff', 400:'#48b8fb', 500:'#1e9eef', 600:'#0b7ecf', 700:'#0a64a6', 800:'#0d5588', 900:'#114870' }
+          },
+          boxShadow: { soft:'0 1px 0 0 rgba(255,255,255,.04) inset, 0 8px 30px -12px rgba(0,0,0,.5)' }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    html,body{background:#0b0f17;color:#e5e7eb}
+    .grid-bg{background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.06) 1px, transparent 0);background-size:22px 22px}
+    .glow{background:radial-gradient(60% 60% at 50% 0%, rgba(30,158,239,.25), transparent 70%)}
+    @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+  </style>
 </head>
-<body class="bg-paper text-ink antialiased font-sans">
-<a href="#main" class="skip">İçeriğe geç</a>
+<body class="font-sans antialiased selection:bg-brand-500/30 selection:text-white">
 
-<header class="sticky top-0 z-40 backdrop-blur bg-paper/80 border-b border-black/5">
-  <div class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
-      <span class="inline-block w-6 h-6 rounded-md bg-ink text-paper grid place-items-center text-[11px]">oy</span>
-      openyks
-    </a>
-    <nav class="flex items-center gap-2 sm:gap-3 text-sm">
-      <a href="#nasil-calisir" class="px-3 py-2 rounded-md hover:bg-black/5">Nasıl çalışır?</a>
-      <a href="https://github.com/mekkaraliwork/openyks" class="px-3 py-2 rounded-md hover:bg-black/5">GitHub</a>
-      <a href="/openyks/onboarding.html" class="ml-1 inline-flex items-center gap-1 bg-ink text-paper px-3.5 py-2 rounded-md text-sm font-medium hover:bg-ink/90">Ücretsiz başla →</a>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-3 focus:py-2 focus:bg-brand-500 focus:text-white focus:rounded-md">İçeriğe atla</a>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-ink-900/70 border-b border-white/5">
+    <nav class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between" aria-label="Ana navigasyon">
+      <a href="#" class="flex items-center gap-2 font-extrabold tracking-tight">
+        <span class="inline-flex items-center justify-center h-7 w-7 rounded-lg bg-brand-500 text-white">o</span>
+        <span class="text-white">openyks</span>
+      </a>
+      <div class="flex items-center gap-2 sm:gap-4 text-sm">
+        <a href="#nasil-calisir" class="hidden sm:inline text-gray-300 hover:text-white">Nasıl çalışır</a>
+        <a href="https://github.com/mekkaraliwork/openyks" rel="noopener" class="hidden sm:inline text-gray-300 hover:text-white">GitHub</a>
+        <a href="/openyks/onboarding.html" class="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 hover:bg-brand-400 text-white px-3.5 py-2 font-semibold shadow-soft">
+          Ücretsiz başla
+          <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </nav>
-  </div>
-</header>
+  </header>
 
-<main id="main">
+  <main id="main">
 
-  <!-- HERO -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_50%_0%,#22d3ee22,transparent_70%)]"></div>
-    <div class="max-w-6xl mx-auto px-5 pt-16 sm:pt-24 pb-14 text-center">
-      <div class="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-black/5 mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
-        Açık kaynak · Yapım aşamasında — <span class="opacity-70">Şu an: TYT 2024 · Yakında: TYT 2023</span>
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 grid-bg opacity-50"></div>
+      <div class="absolute inset-0 glow"></div>
+      <div class="relative max-w-6xl mx-auto px-5 pt-16 pb-20 sm:pt-24 sm:pb-28 text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-300">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          Açık kaynak · Tarayıcıda çalışır
+        </span>
+        <h1 class="mt-5 text-4xl sm:text-6xl font-extrabold tracking-tight text-white">
+          YKS'yi <span class="text-brand-400">veriyle</span> çalış.
+        </h1>
+        <p class="mt-5 max-w-2xl mx-auto text-lg text-gray-300">
+          Geçmiş soruları çöz, denemelerini analiz et, sıradaki çalışma adımını gör.
+          Hesapsız, ücretsiz, tarayıcında.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="/openyks/onboarding.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 hover:bg-brand-400 text-white px-6 py-3.5 font-semibold shadow-soft">
+            Ücretsiz başla — 30 sn
+            <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#nasil-calisir" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-white px-6 py-3.5 font-semibold">
+            Nasıl çalışır?
+          </a>
+        </div>
+        <p class="mt-4 text-xs text-gray-400">Kart yok · Kayıt yok · Veriler cihazında kalır</p>
       </div>
-      <h1 class="text-4xl sm:text-6xl font-semibold tracking-tight leading-[1.05]">
-        YKS'yi <span class="bg-gradient-to-r from-brand to-brand2 bg-clip-text text-transparent">veriyle</span> çalış.
-      </h1>
-      <p class="mt-5 max-w-2xl mx-auto text-lg text-ink/70">
-        Geçmiş soruları çöz, denemeni analiz et, sıradaki adımı gör. Hesapsız, ücretsiz, tarayıcında.
-      </p>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/openyks/onboarding.html" class="inline-flex items-center gap-2 bg-ink text-paper px-5 py-3 rounded-lg font-medium hover:bg-ink/90">
-          Ücretsiz başla — 30 sn →
-        </a>
-        <a href="#nasil-calisir" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-black/10 hover:bg-black/5">
-          Nasıl çalışır?
-        </a>
-      </div>
-      <p class="mt-4 text-xs text-ink/60">TYT · AYT · YDT · Veriler cihazında kalır</p>
-    </div>
+    </section>
 
     <!-- Trust bar -->
-    <div class="max-w-6xl mx-auto px-5 pb-14">
-      <ul class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-ink/70">
-        <li>✓ Ücretsiz</li>
-        <li>✓ Kayıt yok</li>
-        <li>✓ Veriler cihazında</li>
-        <li>✓ Açık kaynak</li>
-        <li>✓ Reklamsız</li>
-        <li>✓ Kurulum yok</li>
-      </ul>
-    </div>
-  </section>
+    <section aria-label="Güven göstergeleri" class="border-y border-white/5 bg-ink-950/40">
+      <div class="max-w-6xl mx-auto px-5 py-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-gray-400">
+        <span>✓ Ücretsiz</span>
+        <span>✓ Reklamsız</span>
+        <span>✓ Hesap zorunlu değil</span>
+        <span>✓ Veriler cihazında</span>
+        <span>✓ Açık kaynak</span>
+        <span>✓ Kurulum yok</span>
+      </div>
+    </section>
 
-  <!-- FEATURES -->
-  <section aria-labelledby="features" class="max-w-6xl mx-auto px-5 py-16">
-    <header class="max-w-2xl">
-      <h2 id="features" class="text-3xl sm:text-4xl font-semibold tracking-tight">Üç şey, doğru yapılmış.</h2>
-      <p class="mt-3 text-ink/70">Soru havuzu, gerçekçi deneme ve kişisel analiz — tek yerde.</p>
-    </header>
-    <div class="mt-10 grid sm:grid-cols-3 gap-4">
-      <article class="p-6 rounded-2xl bg-white border border-black/5">
-        <div class="w-9 h-9 rounded-lg bg-ink text-paper grid place-items-center mb-4" aria-hidden="true">◧</div>
-        <h3 class="font-semibold">Doğru soruyla pratik yap.</h3>
-        <p class="mt-2 text-sm text-ink/70">Geçmiş YKS sorularını yıla, derse ve konuya göre filtrele. Çözüm geçmişini takip et.</p>
-      </article>
-      <article class="p-6 rounded-2xl bg-white border border-black/5">
-        <div class="w-9 h-9 rounded-lg bg-ink text-paper grid place-items-center mb-4" aria-hidden="true">◉</div>
-        <h3 class="font-semibold">Sınav gününü prova et.</h3>
-        <p class="mt-2 text-sm text-ink/70">Süre, optik form mantığı ve anında değerlendirmeyle gerçek sınav koşulu.</p>
-      </article>
-      <article class="p-6 rounded-2xl bg-white border border-black/5">
-        <div class="w-9 h-9 rounded-lg bg-ink text-paper grid place-items-center mb-4" aria-hidden="true">↗</div>
-        <h3 class="font-semibold">Bir sonraki adımı gör.</h3>
-        <p class="mt-2 text-sm text-ink/70">Zayıf konular, hız–doğruluk dengesi ve önerilen çalışma sırası.</p>
-      </article>
-    </div>
-  </section>
+    <!-- Features -->
+    <section aria-labelledby="features-title" class="max-w-6xl mx-auto px-5 py-20">
+      <div class="max-w-2xl">
+        <h2 id="features-title" class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Tahmin değil, ölçüm.</h2>
+        <p class="mt-3 text-gray-300">Çalıştığını ölçer, ölçtüğünü gösterir, sıradaki adımı söyler.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-5">
+        <article class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-soft">
+          <div class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-brand-500/15 text-brand-300">
+            <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h16"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-white">Geçmiş sınav soruları</h3>
+          <p class="mt-2 text-sm text-gray-300">Ders, konu ve yıla göre filtrele; doğru soruyla doğru zamanda çalış.</p>
+        </article>
+        <article class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-soft">
+          <div class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-brand-500/15 text-brand-300">
+            <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-white">İnteraktif deneme</h3>
+          <p class="mt-2 text-sm text-gray-300">Sınav günü gibi zamanlı çöz, soruları işaretle, sonunda anında geri bildirim al.</p>
+        </article>
+        <article class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-soft">
+          <div class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-brand-500/15 text-brand-300">
+            <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-8"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-white">Kişiye özel analiz</h3>
+          <p class="mt-2 text-sm text-gray-300">Zayıf konularını görür, sıradaki adımı önceliklendirilmiş şekilde önerir.</p>
+        </article>
+      </div>
+    </section>
 
-  <!-- HOW IT WORKS -->
-  <section id="nasil-calisir" aria-labelledby="how" class="bg-ink text-paper">
-    <div class="max-w-6xl mx-auto px-5 py-20">
-      <header class="max-w-2xl">
-        <h2 id="how" class="text-3xl sm:text-4xl font-semibold tracking-tight">3 adımda başla.</h2>
-        <p class="mt-3 text-paper/70">Hesap yok, kurulum yok. Açıp çalışmaya başla.</p>
-      </header>
-      <ol class="mt-10 grid sm:grid-cols-3 gap-4">
-        <li class="p-6 rounded-2xl bg-white/5 border border-white/10">
-          <div class="text-paper/50 text-sm">01</div>
-          <h3 class="mt-1 font-semibold">Profilini seç</h3>
-          <p class="mt-2 text-sm text-paper/70">Alanını ve hedefini seç. 30 saniye.</p>
-        </li>
-        <li class="p-6 rounded-2xl bg-white/5 border border-white/10">
-          <div class="text-paper/50 text-sm">02</div>
-          <h3 class="mt-1 font-semibold">Çöz</h3>
-          <p class="mt-2 text-sm text-paper/70">Geçmiş sorularla pratik yap ya da tam deneme başlat.</p>
-        </li>
-        <li class="p-6 rounded-2xl bg-white/5 border border-white/10">
-          <div class="text-paper/50 text-sm">03</div>
-          <h3 class="mt-1 font-semibold">Analizi gör</h3>
-          <p class="mt-2 text-sm text-paper/70">Zayıf konular + sıradaki adım. Tekrar et.</p>
-        </li>
-      </ol>
-      <div class="mt-10">
-        <a href="/openyks/onboarding.html" class="inline-flex items-center gap-2 bg-paper text-ink px-5 py-3 rounded-lg font-medium hover:bg-white">
-          Ücretsiz başla →
-        </a>
+    <!-- How it works -->
+    <section id="nasil-calisir" aria-labelledby="how-title" class="bg-ink-950/40 border-y border-white/5">
+      <div class="max-w-6xl mx-auto px-5 py-20">
+        <div class="max-w-2xl">
+          <h2 id="how-title" class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Nasıl çalışır?</h2>
+          <p class="mt-3 text-gray-300">Üç adımda kişisel çalışma döngün hazır.</p>
+        </div>
+        <ol class="mt-10 grid md:grid-cols-3 gap-5">
+          <li class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <div class="text-xs font-semibold text-brand-300">ADIM 1</div>
+            <h3 class="mt-2 font-semibold text-white">Profilini seç</h3>
+            <p class="mt-2 text-sm text-gray-300">Sayısal, eşit ağırlık, sözel veya dil. 10 saniyede başla.</p>
+          </li>
+          <li class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <div class="text-xs font-semibold text-brand-300">ADIM 2</div>
+            <h3 class="mt-2 font-semibold text-white">Soruları çöz</h3>
+            <p class="mt-2 text-sm text-gray-300">Konu çalış ya da tam deneme yap. Zamanı sen ayarla.</p>
+          </li>
+          <li class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <div class="text-xs font-semibold text-brand-300">ADIM 3</div>
+            <h3 class="mt-2 font-semibold text-white">Analizini gör</h3>
+            <p class="mt-2 text-sm text-gray-300">Güçlü ve zayıf konuların, sıradaki çalışma önerin tek ekranda.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Why openyks (TABLE ONLY) -->
+    <section aria-labelledby="why-title" class="max-w-6xl mx-auto px-5 py-20">
+      <div class="max-w-2xl">
+        <h2 id="why-title" class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Neden openyks?</h2>
+        <p class="mt-3 text-gray-300">Mevcut çalışma yöntemleriyle nesnel bir karşılaştırma.</p>
+      </div>
+      <div class="mt-8 overflow-x-auto rounded-2xl border border-white/10">
+        <table class="w-full text-sm">
+          <thead class="bg-white/[0.04] text-gray-300">
+            <tr>
+              <th scope="col" class="text-left font-semibold px-4 py-3">Kriter</th>
+              <th scope="col" class="text-left font-semibold px-4 py-3 text-brand-300">openyks</th>
+              <th scope="col" class="text-left font-semibold px-4 py-3">Dershane / Kurs</th>
+              <th scope="col" class="text-left font-semibold px-4 py-3">YouTube</th>
+              <th scope="col" class="text-left font-semibold px-4 py-3">Kitap / PDF</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-gray-200">
+            <tr><th scope="row" class="text-left font-medium px-4 py-3">Ücret</th><td class="px-4 py-3">Ücretsiz</td><td class="px-4 py-3">Yüksek</td><td class="px-4 py-3">Ücretsiz</td><td class="px-4 py-3">Orta</td></tr>
+            <tr><th scope="row" class="text-left font-medium px-4 py-3">Kişiye özel analiz</th><td class="px-4 py-3">Var</td><td class="px-4 py-3">Sınırlı</td><td class="px-4 py-3">Yok</td><td class="px-4 py-3">Yok</td></tr>
+            <tr><th scope="row" class="text-left font-medium px-4 py-3">İnteraktif deneme</th><td class="px-4 py-3">Var</td><td class="px-4 py-3">Var</td><td class="px-4 py-3">Yok</td><td class="px-4 py-3">Yok</td></tr>
+            <tr><th scope="row" class="text-left font-medium px-4 py-3">Reklam</th><td class="px-4 py-3">Yok</td><td class="px-4 py-3">Yok</td><td class="px-4 py-3">Var</td><td class="px-4 py-3">Yok</td></tr>
+            <tr><th scope="row" class="text-left font-medium px-4 py-3">Veri gizliliği</th><td class="px-4 py-3">Cihazda</td><td class="px-4 py-3">Sunucuda</td><td class="px-4 py-3">Sunucuda</td><td class="px-4 py-3">—</td></tr>
+            <tr><th scope="row" class="text-left font-medium px-4 py-3">Kurulum</th><td class="px-4 py-3">Yok</td><td class="px-4 py-3">Gerekli</td><td class="px-4 py-3">Yok</td><td class="px-4 py-3">—</td></tr>
+            <tr><th scope="row" class="text-left font-medium px-4 py-3">Açık kaynak</th><td class="px-4 py-3">Evet</td><td class="px-4 py-3">Hayır</td><td class="px-4 py-3">Hayır</td><td class="px-4 py-3">Hayır</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-gray-400">Karşılaştırma genel bir özettir; bireysel deneyim değişebilir.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section aria-labelledby="faq-title" class="bg-ink-950/40 border-y border-white/5">
+      <div class="max-w-3xl mx-auto px-5 py-20">
+        <h2 id="faq-title" class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Sıkça sorulanlar</h2>
+        <div class="mt-8 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/[0.03]" id="faq">
+          <details class="group p-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-white">
+              Gerçekten ücretsiz mi?
+              <span aria-hidden="true" class="ml-4 transition-transform group-open:rotate-45 text-brand-300 text-xl leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-300">Evet. openyks tamamen ücretsiz ve reklamsızdır. Ödeme, abonelik veya premium katman yoktur.</p>
+          </details>
+          <details class="group p-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-white">
+              Hesap açmam gerekiyor mu?
+              <span aria-hidden="true" class="ml-4 transition-transform group-open:rotate-45 text-brand-300 text-xl leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-300">Hayır. Tarayıcına gir ve çözmeye başla. İstersen ilerlemeni yedeklemek için sonradan bağlanabilirsin.</p>
+          </details>
+          <details class="group p-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-white">
+              Verilerim nerede tutuluyor?
+              <span aria-hidden="true" class="ml-4 transition-transform group-open:rotate-45 text-brand-300 text-xl leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-300">Çözüm geçmişin ve analizlerin cihazında (tarayıcı depolaması) tutulur. Sunucumuza kişisel veri göndermeyiz.</p>
+          </details>
+          <details class="group p-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-white">
+              Sorular nereden geliyor?
+              <span aria-hidden="true" class="ml-4 transition-transform group-open:rotate-45 text-brand-300 text-xl leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-300">Kamuya açık geçmiş sınav soruları kullanılır; topluluk katkılarıyla düzenlenir ve sürekli iyileştirilir.</p>
+          </details>
+          <details class="group p-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-white">
+              Mobilde çalışıyor mu?
+              <span aria-hidden="true" class="ml-4 transition-transform group-open:rotate-45 text-brand-300 text-xl leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-300">Evet. Telefon, tablet ve bilgisayar tarayıcılarında sorunsuz çalışır; uygulama indirmen gerekmez.</p>
+          </details>
+          <details class="group p-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-white">
+              Açık kaynak mı? Katkı verebilir miyim?
+              <span aria-hidden="true" class="ml-4 transition-transform group-open:rotate-45 text-brand-300 text-xl leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-300">Evet. Kod tabanı GitHub’da herkese açık. Issue açabilir, PR gönderebilirsin.</p>
+          </details>
+          <details class="group p-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-white">
+              Analiz neye göre öneri veriyor?
+              <span aria-hidden="true" class="ml-4 transition-transform group-open:rotate-45 text-brand-300 text-xl leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-300">Çözdüğün soruların ders, konu ve zorluk dağılımına bakar; zayıf olduğun alanları önceliklendirir.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 glow"></div>
+      <div class="relative max-w-3xl mx-auto px-5 py-20 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Bugün bir denemeyle başla.</h2>
+        <p class="mt-3 text-gray-300">30 saniyede ilk soruda olursun. Kayıt yok, kart yok, kurulum yok.</p>
+        <div class="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="/openyks/onboarding.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 hover:bg-brand-400 text-white px-6 py-3.5 font-semibold shadow-soft">
+            Ücretsiz başla
+            <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://github.com/mekkaraliwork/openyks" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-white px-6 py-3.5 font-semibold">
+            GitHub'da incele
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center h-6 w-6 rounded-md bg-brand-500 text-white text-xs font-bold">o</span>
+        <span>© <span id="y"></span> openyks</span>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="https://github.com/mekkaraliwork/openyks" rel="noopener" class="hover:text-white">GitHub</a>
+        <a href="#nasil-calisir" class="hover:text-white">Nasıl çalışır</a>
+        <a href="/openyks/onboarding.html" class="hover:text-white">Başla</a>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- WHY (tablo, tek format) -->
-  <section aria-labelledby="why" class="max-w-6xl mx-auto px-5 py-20">
-    <header class="max-w-2xl">
-      <h2 id="why" class="text-3xl sm:text-4xl font-semibold tracking-tight">Neden openyks?</h2>
-      <p class="mt-3 text-ink/70">Mevcut kaynaklarını bırakma — bir de stratejini ekle.</p>
-    </header>
-    <div class="mt-8 overflow-x-auto rounded-2xl border border-black/10 bg-white">
-      <table class="w-full text-left text-sm">
-        <thead class="bg-black/5 text-ink/80">
-          <tr>
-            <th class="p-4 font-medium">Alternatif</th>
-            <th class="p-4 font-medium">Eksiği</th>
-            <th class="p-4 font-medium">openyks farkı</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-black/5">
-          <tr><td class="p-4 font-medium">Dershane / koçluk</td><td class="p-4 text-ink/70">Pahalı, sabit program</td><td class="p-4">Kendi verine göre uyarlanır, ücretsiz</td></tr>
-          <tr><td class="p-4 font-medium">YouTube videoları</td><td class="p-4 text-ink/70">Pasif izleme</td><td class="p-4">Aktif çözüm + anında ölçüm</td></tr>
-          <tr><td class="p-4 font-medium">Kaynak kitaplar</td><td class="p-4 text-ink/70">Geri bildirim yok</td><td class="p-4">Zayıf konu listesi, hız–doğruluk analizi</td></tr>
-          <tr><td class="p-4 font-medium">Genel deneme uygulamaları</td><td class="p-4 text-ink/70">Reklam + hesap zorunluluğu</td><td class="p-4">Reklamsız, hesapsız, veriler cihazında</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section aria-labelledby="faq" class="max-w-3xl mx-auto px-5 py-20">
-    <header>
-      <h2 id="faq" class="text-3xl sm:text-4xl font-semibold tracking-tight">Sıkça sorulanlar</h2>
-    </header>
-    <div class="mt-8 divide-y divide-black/10 border-y border-black/10">
-      <details class="group py-4">
-        <summary class="flex items-center justify-between gap-4"><span class="font-medium">openyks ücretli mi?</span><span class="chev" aria-hidden="true">⌄</span></summary>
-        <p class="mt-2 text-ink/70 text-sm">Hayır, tamamen ücretsiz ve reklamsız.</p>
-      </details>
-      <details class="group py-4">
-        <summary class="flex items-center justify-between gap-4"><span class="font-medium">Kayıt olmam gerekiyor mu?</span><span class="chev" aria-hidden="true">⌄</span></summary>
-        <p class="mt-2 text-ink/70 text-sm">Hayır. E-posta ya da şifre istemiyoruz.</p>
-      </details>
-      <details class="group py-4">
-        <summary class="flex items-center justify-between gap-4"><span class="font-medium">Verilerim nerede saklanıyor?</span><span class="chev" aria-hidden="true">⌄</span></summary>
-        <p class="mt-2 text-ink/70 text-sm">Tamamen senin cihazında. Sunucuya çözüm/analiz verisi göndermiyoruz.</p>
-      </details>
-      <details class="group py-4">
-        <summary class="flex items-center justify-between gap-4"><span class="font-medium">Sorular nereden geliyor?</span><span class="chev" aria-hidden="true">⌄</span></summary>
-        <p class="mt-2 text-ink/70 text-sm">ÖSYM tarafından kamuya açık olarak yayımlanmış geçmiş YKS sorularından. Detay için <a class="underline" href="https://github.com/mekkaraliwork/openyks#i̇çerik-politikası">İçerik politikası</a>.</p>
-      </details>
-      <details class="group py-4">
-        <summary class="flex items-center justify-between gap-4"><span class="font-medium">Mobilde çalışıyor mu?</span><span class="chev" aria-hidden="true">⌄</span></summary>
-        <p class="mt-2 text-ink/70 text-sm">Evet. Telefon ve tabletten sorunsuz çalışır.</p>
-      </details>
-      <details class="group py-4">
-        <summary class="flex items-center justify-between gap-4"><span class="font-medium">Katkıda bulunabilir miyim?</span><span class="chev" aria-hidden="true">⌄</span></summary>
-        <p class="mt-2 text-ink/70 text-sm">Evet, proje açık kaynak. GitHub üzerinden issue açabilir ya da PR gönderebilirsin.</p>
-      </details>
-      <details class="group py-4">
-        <summary class="flex items-center justify-between gap-4"><span class="font-medium">Hangi sınav türlerini kapsıyor?</span><span class="chev" aria-hidden="true">⌄</span></summary>
-        <p class="mt-2 text-ink/70 text-sm">TYT, AYT ve YDT. İçerik kademeli olarak genişliyor.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section aria-labelledby="final" class="max-w-6xl mx-auto px-5 pb-24">
-    <div class="rounded-3xl bg-ink text-paper p-10 sm:p-14 text-center">
-      <h2 id="final" class="text-3xl sm:text-4xl font-semibold tracking-tight">Bugün bir denemeyle başla.</h2>
-      <p class="mt-3 text-paper/70">Hesap yok, kurulum yok. Birkaç saniye sürer.</p>
-      <div class="mt-7 flex flex-wrap justify-center gap-3">
-        <a href="/openyks/onboarding.html" class="inline-flex items-center gap-2 bg-paper text-ink px-5 py-3 rounded-lg font-medium hover:bg-white">Ücretsiz başla →</a>
-        <a href="https://github.com/mekkaraliwork/openyks" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/20 hover:bg-white/10">GitHub'da incele</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="border-t border-black/10">
-  <div class="max-w-6xl mx-auto px-5 py-8 flex flex-wrap items-center justify-between gap-3 text-sm text-ink/60">
-    <div>© <span id="y"></span> openyks · Açık kaynak</div>
-    <nav class="flex items-center gap-4">
-      <a class="hover:text-ink" href="https://github.com/mekkaraliwork/openyks">GitHub</a>
-      <a class="hover:text-ink" href="https://github.com/mekkaraliwork/openyks#i̇çerik-politikası">İçerik politikası</a>
-    </nav>
-  </div>
-</footer>
-
-<script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-  // ESC closes any open <details>
-  document.addEventListener('keydown', (e)=>{
-    if(e.key==='Escape') document.querySelectorAll('details[open]').forEach(d=>d.open=false);
-  });
-</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // FAQ: tek seferde tek açık + ESC ile kapat
+    const faq = document.getElementById('faq');
+    if (faq) {
+      faq.querySelectorAll('details').forEach(d => {
+        d.addEventListener('toggle', () => {
+          if (d.open) faq.querySelectorAll('details').forEach(o => { if (o!==d) o.open=false; });
+        });
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') faq.querySelectorAll('details[open]').forEach(o => o.open=false);
+      });
+    }
+  </script>
 </body>
 </html>
