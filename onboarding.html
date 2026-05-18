@@ -1,1 +1,986 @@
-<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>openyks — Onboarding</title><script src="https://cdn.tailwindcss.com"></script></head><body class="min-h-screen bg-[#f7f7f5] text-[#0b1220] grid place-items-center p-6 font-sans"><div class="max-w-md text-center"><h1 class="text-3xl font-semibold tracking-tight">Onboarding</h1><p class="mt-3 text-black/70">Bu sayfa yapım aşamasında. Yakında: alan seçimi → hedef → ilk soru.</p><a href="/" class="mt-6 inline-flex bg-[#0b1220] text-[#f7f7f5] px-5 py-3 rounded-lg">← Ana sayfa</a></div></body></html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#070b14" />
+<meta name="description" content="openyks onboarding — 30 saniyede kişisel YKS başlangıç planını oluştur." />
+<title>openyks · Hızlı Kurulum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070b14;
+    --bg-2:#0b1020;
+    --panel:rgba(16,22,40,.7);
+    --panel-2:rgba(20,28,52,.55);
+    --border:rgba(255,255,255,.08);
+    --border-2:rgba(255,255,255,.14);
+    --text:#e6ecff;
+    --muted:#8a93b2;
+    --muted-2:#aeb6d3;
+    --brand:#5b8cff;
+    --brand-2:#7c5cff;
+    --cyan:#22d3ee;
+    --violet:#a78bfa;
+    --green:#34d399;
+    --amber:#fbbf24;
+    --danger:#fb7185;
+    --radius:16px;
+    --radius-sm:12px;
+    --shadow:0 20px 60px -20px rgba(20,30,80,.6), 0 8px 24px -10px rgba(0,0,0,.5);
+    --grad: linear-gradient(135deg,#5b8cff 0%,#7c5cff 50%,#22d3ee 100%);
+    --grad-soft: linear-gradient(135deg,rgba(91,140,255,.18),rgba(124,92,255,.18) 50%,rgba(34,211,238,.18));
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:
+      radial-gradient(1000px 600px at 85% -10%,rgba(124,92,255,.18),transparent 60%),
+      radial-gradient(900px 500px at -10% 10%,rgba(34,211,238,.12),transparent 55%),
+      radial-gradient(700px 500px at 50% 110%,rgba(91,140,255,.15),transparent 60%),
+      var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit}
+  ::selection{background:rgba(124,92,255,.4)}
+
+  /* Navbar */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(140%) blur(12px);
+    background:rgba(7,11,20,.65);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 22px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.01em}
+  .logo-dot{
+    width:28px;height:28px;border-radius:8px;
+    background:var(--grad);
+    box-shadow:0 6px 18px -6px rgba(124,92,255,.7);
+    position:relative;
+  }
+  .logo-dot::after{
+    content:"";position:absolute;inset:6px;border-radius:4px;
+    background:rgba(7,11,20,.65);
+  }
+  .logo span b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-link{
+    color:var(--muted-2);font-size:14px;font-weight:500;
+    padding:8px 14px;border-radius:10px;border:1px solid var(--border);
+    transition:.2s;
+  }
+  .nav-link:hover{color:#fff;border-color:var(--border-2);background:rgba(255,255,255,.03)}
+
+  /* Layout */
+  .wrap{max-width:1200px;margin:0 auto;padding:28px 22px 140px}
+  .grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 360px;
+    gap:28px;
+    align-items:start;
+  }
+  @media (max-width: 960px){
+    .grid{grid-template-columns:1fr}
+    .side{order:2;position:static!important}
+  }
+
+  /* Panels */
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(14px);
+  }
+  .form-panel{padding:28px}
+  @media (max-width:560px){.form-panel{padding:20px}}
+
+  /* Header */
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 12px;border-radius:999px;
+    background:var(--grad-soft);
+    border:1px solid var(--border-2);
+    font-size:12px;color:var(--muted-2);font-weight:500;
+  }
+  .badge .pulse{
+    width:7px;height:7px;border-radius:50%;background:var(--cyan);
+    box-shadow:0 0 0 0 rgba(34,211,238,.6);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(34,211,238,.5)}
+    70%{box-shadow:0 0 0 10px rgba(34,211,238,0)}
+    100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}
+  }
+  h1.title{
+    font-size:clamp(22px,3.5vw,30px);
+    line-height:1.2;
+    margin:14px 0 8px;
+    letter-spacing:-.02em;
+    font-weight:700;
+  }
+  .subtitle{color:var(--muted);font-size:15px;margin:0 0 22px}
+
+  /* Stepper */
+  .stepper{
+    display:flex;align-items:center;gap:10px;margin-top:18px;
+  }
+  .step-pill{
+    flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.06);
+    overflow:hidden;position:relative;
+  }
+  .step-pill .fill{
+    position:absolute;inset:0;width:0;
+    background:var(--grad);
+    transition:width .4s ease;
+  }
+  .step-meta{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:12px;color:var(--muted);margin-top:10px;
+  }
+  .step-meta b{color:#fff;font-weight:600}
+
+  /* Field */
+  .field{margin-top:22px}
+  .label{
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:14px;color:#fff;font-weight:600;margin-bottom:10px;
+  }
+  .label .hint{color:var(--muted);font-weight:400;font-size:12px}
+  .helper{color:var(--muted);font-size:13px;margin:-4px 0 12px}
+
+  /* Card chips */
+  .chips{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .chip{
+    position:relative;cursor:pointer;user-select:none;
+    padding:14px 14px 14px 14px;
+    border-radius:14px;border:1px solid var(--border);
+    background:rgba(255,255,255,.02);
+    transition:.18s;display:flex;align-items:center;gap:10px;
+    font-size:14px;font-weight:500;color:var(--muted-2);
+  }
+  .chip:hover{border-color:var(--border-2);color:#fff;background:rgba(255,255,255,.04)}
+  .chip input{position:absolute;opacity:0;inset:0;cursor:pointer}
+  .chip .check{
+    width:18px;height:18px;border-radius:6px;flex:none;
+    border:1.5px solid rgba(255,255,255,.18);
+    display:grid;place-items:center;transition:.18s;
+  }
+  .chip .check svg{opacity:0;transform:scale(.7);transition:.18s}
+  .chip.selected{
+    color:#fff;
+    background:var(--grad-soft);
+    border-color:transparent;
+    box-shadow:0 0 0 1px rgba(124,92,255,.45) inset, 0 10px 28px -14px rgba(124,92,255,.45);
+  }
+  .chip.selected .check{
+    background:var(--grad);border-color:transparent;
+  }
+  .chip.selected .check svg{opacity:1;transform:scale(1)}
+  .chip:focus-within{outline:2px solid rgba(91,140,255,.55);outline-offset:2px}
+
+  /* Inputs */
+  .inputs-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .input{
+    display:flex;flex-direction:column;gap:6px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:12px;padding:10px 12px;
+    transition:.18s;
+  }
+  .input:focus-within{border-color:rgba(91,140,255,.55);box-shadow:0 0 0 3px rgba(91,140,255,.18)}
+  .input label{font-size:12px;color:var(--muted)}
+  .input input{
+    background:transparent;border:0;outline:0;color:#fff;
+    font-size:15px;font-weight:600;width:100%;
+    font-family:inherit;
+  }
+  .input.err{border-color:rgba(251,113,133,.6)}
+  .err-msg{color:var(--danger);font-size:12px;margin-top:6px}
+
+  /* Buttons */
+  .actions{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-top:32px;gap:12px;
+  }
+  .btn{
+    appearance:none;border:0;cursor:pointer;
+    padding:12px 18px;border-radius:12px;
+    font-size:14px;font-weight:600;
+    transition:.2s;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-ghost{
+    background:transparent;color:var(--muted-2);
+    border:1px solid var(--border);
+  }
+  .btn-ghost:hover{color:#fff;border-color:var(--border-2);background:rgba(255,255,255,.03)}
+  .btn-primary{
+    color:#fff;background:var(--grad);
+    box-shadow:0 12px 30px -12px rgba(124,92,255,.6);
+  }
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 38px -14px rgba(124,92,255,.7)}
+  .btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+  .btn-link{background:transparent;color:var(--muted);padding:10px 4px}
+  .btn-link:hover{color:#fff}
+
+  /* Side panel */
+  .side{position:sticky;top:90px}
+  .side .panel{padding:20px}
+  .side h3{margin:0 0 4px;font-size:14px;color:var(--muted);font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+  .side .profile{
+    margin-top:12px;display:grid;gap:10px;
+  }
+  .row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 12px;border-radius:10px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    font-size:13px;
+  }
+  .row .k{color:var(--muted)}
+  .row .v{color:#fff;font-weight:600;text-align:right;max-width:60%}
+  .row .v.empty{color:var(--muted);font-weight:400}
+  .mini-stat{
+    margin-top:14px;padding:14px;border-radius:12px;
+    background:var(--grad-soft);border:1px solid var(--border-2);
+    font-size:13px;color:var(--muted-2);
+  }
+  .mini-stat b{color:#fff;display:block;font-size:15px;margin-bottom:2px}
+
+  /* Section animation */
+  .step-section{display:none;animation:fade .35s ease}
+  .step-section.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important}
+  }
+
+  /* Result */
+  .result-header{
+    display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:8px;
+  }
+  .pill{
+    padding:6px 12px;border-radius:999px;font-size:13px;font-weight:600;
+    background:rgba(255,255,255,.05);border:1px solid var(--border);
+  }
+  .pill.brand{background:var(--grad-soft);border-color:var(--border-2)}
+  .plan-grid{
+    display:grid;gap:14px;grid-template-columns:1fr 1fr;margin-top:20px;
+  }
+  @media (max-width:560px){.plan-grid{grid-template-columns:1fr}}
+  .plan-card{
+    padding:16px;border-radius:14px;
+    background:rgba(255,255,255,.03);border:1px solid var(--border);
+  }
+  .plan-card h4{margin:0 0 6px;font-size:13px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+  .plan-card p{margin:0;font-size:15px;color:#fff;font-weight:600;line-height:1.45}
+
+  .topics{margin-top:22px;display:grid;gap:10px}
+  .topic{
+    display:grid;grid-template-columns:32px 1fr auto;gap:14px;align-items:center;
+    padding:14px;border-radius:14px;
+    background:rgba(255,255,255,.03);border:1px solid var(--border);
+  }
+  .topic .num{
+    width:32px;height:32px;border-radius:10px;display:grid;place-items:center;
+    background:var(--grad);font-weight:700;font-size:14px;color:#fff;
+    box-shadow:0 8px 20px -10px rgba(124,92,255,.6);
+  }
+  .topic .name{font-weight:600;color:#fff;font-size:14px}
+  .topic .sub{font-size:12px;color:var(--muted);margin-top:2px}
+  .tag{
+    font-size:11px;padding:5px 9px;border-radius:999px;font-weight:600;
+    background:rgba(34,211,238,.12);color:var(--cyan);border:1px solid rgba(34,211,238,.25);
+    white-space:nowrap;
+  }
+  .tag.amber{background:rgba(251,191,36,.12);color:var(--amber);border-color:rgba(251,191,36,.25)}
+  .tag.green{background:rgba(52,211,153,.12);color:var(--green);border-color:rgba(52,211,153,.25)}
+  .tag.violet{background:rgba(167,139,250,.14);color:var(--violet);border-color:rgba(167,139,250,.28)}
+
+  .notice{
+    margin-top:22px;padding:14px 16px;border-radius:12px;
+    background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.22);
+    color:#f1d68b;font-size:13px;
+  }
+  .cta-row{
+    margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  }
+  .cta-row .btn-primary{padding:14px 22px;font-size:15px}
+
+  /* Resume bar */
+  .resume{
+    margin-bottom:18px;padding:14px 16px;border-radius:14px;
+    background:var(--grad-soft);border:1px solid var(--border-2);
+    display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+    font-size:14px;
+  }
+  .resume .t{color:#fff;font-weight:600}
+  .resume .s{color:var(--muted-2);font-size:13px}
+  .resume-btns{display:flex;gap:8px}
+  .resume .btn{padding:8px 14px;font-size:13px}
+
+  /* Foot note */
+  .trust{
+    text-align:center;color:var(--muted);font-size:12px;margin-top:24px;
+  }
+  .trust a{color:var(--muted-2);text-decoration:underline;text-decoration-color:rgba(255,255,255,.15)}
+
+  /* Sticky mobile CTA */
+  .mobile-cta{
+    display:none;
+    position:fixed;left:0;right:0;bottom:0;z-index:40;
+    padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+    background:linear-gradient(180deg,rgba(7,11,20,0),rgba(7,11,20,.92) 30%);
+    backdrop-filter:blur(10px);
+  }
+  .mobile-cta .btn{width:100%;justify-content:center;padding:14px}
+  @media (max-width:720px){
+    .actions{display:none}
+    .mobile-cta{display:block}
+    .wrap{padding-bottom:120px}
+  }
+
+  /* small icon */
+  .ico{width:16px;height:16px;flex:none}
+</style>
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="index.html" class="logo" aria-label="openyks ana sayfa">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span>open<b>yks</b></span>
+    </a>
+    <a class="nav-link" href="index.html">Ana sayfa</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="resume" class="resume" hidden>
+    <div>
+      <div class="t">Önceki oturumun bulundu</div>
+      <div class="s">Kaldığın yerden devam edebilir ya da baştan başlayabilirsin.</div>
+    </div>
+    <div class="resume-btns">
+      <button class="btn btn-ghost" id="restartBtn" type="button">Yeniden başla</button>
+      <button class="btn btn-primary" id="continueBtn" type="button">Devam et</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- FORM -->
+    <section class="panel form-panel" aria-labelledby="ob-title">
+      <div class="badge"><span class="pulse" aria-hidden="true"></span> 30 saniyelik kurulum</div>
+      <h1 class="title" id="ob-title">Önce hedefini tanıyalım.</h1>
+      <p class="subtitle" id="ob-sub">Birkaç kısa bilgiyle sana daha anlamlı bir başlangıç planı hazırlayalım.</p>
+
+      <div class="stepper" aria-hidden="true">
+        <div class="step-pill"><div class="fill" id="fill1"></div></div>
+        <div class="step-pill"><div class="fill" id="fill2"></div></div>
+        <div class="step-pill"><div class="fill" id="fill3"></div></div>
+        <div class="step-pill"><div class="fill" id="fill4"></div></div>
+      </div>
+      <div class="step-meta">
+        <span>Adım <b id="curStep">1</b> / 4</span>
+        <span id="stepTitle">Hedef ve seviye</span>
+      </div>
+
+      <form id="ob-form" novalidate aria-live="polite">
+
+        <!-- STEP 1 -->
+        <div class="step-section active" data-step="1">
+          <div class="field">
+            <div class="label">Hedef sınav <span class="hint">birden fazla seçebilirsin</span></div>
+            <div class="chips" data-group="exams" data-multi="true" role="group" aria-label="Hedef sınav">
+              <label class="chip"><input type="checkbox" value="TYT"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>TYT</label>
+              <label class="chip"><input type="checkbox" value="AYT"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>AYT</label>
+              <label class="chip"><input type="checkbox" value="YDT"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>YDT</label>
+            </div>
+            <div class="err-msg" data-err="exams" hidden>En az bir sınav seç.</div>
+          </div>
+
+          <div class="field">
+            <div class="label">Alan</div>
+            <div class="chips" data-group="track" role="radiogroup" aria-label="Alan">
+              <label class="chip"><input type="radio" name="track" value="Sayısal"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Sayısal</label>
+              <label class="chip"><input type="radio" name="track" value="Eşit Ağırlık"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Eşit Ağırlık</label>
+              <label class="chip"><input type="radio" name="track" value="Sözel"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Sözel</label>
+              <label class="chip"><input type="radio" name="track" value="Dil"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Dil</label>
+              <label class="chip"><input type="radio" name="track" value="Henüz emin değilim"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Henüz emin değilim</label>
+            </div>
+            <div class="err-msg" data-err="track" hidden>Bir alan seç.</div>
+          </div>
+
+          <div class="field">
+            <div class="label">Sınıf seviyesi</div>
+            <div class="chips" data-group="grade" role="radiogroup" aria-label="Sınıf seviyesi">
+              <label class="chip"><input type="radio" name="grade" value="11. sınıf"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>11. sınıf</label>
+              <label class="chip"><input type="radio" name="grade" value="12. sınıf"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>12. sınıf</label>
+              <label class="chip"><input type="radio" name="grade" value="Mezun"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Mezun</label>
+              <label class="chip"><input type="radio" name="grade" value="Diğer"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Diğer</label>
+            </div>
+            <div class="err-msg" data-err="grade" hidden>Sınıf seviyesi seç.</div>
+          </div>
+
+          <div class="field">
+            <div class="label">Hedef <span class="hint">opsiyonel</span></div>
+            <p class="helper">Bilmiyorsan boş bırakabilirsin.</p>
+            <div class="inputs-grid">
+              <div class="input"><label for="targetScore">Hedef puan</label><input id="targetScore" name="targetScore" type="number" inputmode="numeric" min="100" max="560" placeholder="450"></div>
+              <div class="input"><label for="targetRank">Hedef sıralama</label><input id="targetRank" name="targetRank" type="number" inputmode="numeric" min="1" max="3000000" placeholder="25.000"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-section" data-step="2">
+          <div class="field">
+            <div class="label">Son TYT netlerin <span class="hint">opsiyonel</span></div>
+            <p class="helper">Bilmiyorsan boş bırakabilirsin; yaklaşık değerler de iş görür.</p>
+            <div class="inputs-grid">
+              <div class="input"><label for="tytTurkce">Türkçe (0–40)</label><input id="tytTurkce" type="number" min="0" max="40" step="0.25" placeholder="örn. 28"></div>
+              <div class="input"><label for="tytSosyal">Sosyal (0–20)</label><input id="tytSosyal" type="number" min="0" max="20" step="0.25" placeholder="örn. 12"></div>
+              <div class="input"><label for="tytMatematik">Matematik (0–40)</label><input id="tytMatematik" type="number" min="0" max="40" step="0.25" placeholder="örn. 18"></div>
+              <div class="input"><label for="tytFen">Fen (0–20)</label><input id="tytFen" type="number" min="0" max="20" step="0.25" placeholder="örn. 8"></div>
+            </div>
+          </div>
+
+          <div class="field" id="aytBlock" hidden>
+            <div class="label">AYT netlerin <span class="hint">alanına göre gösteriliyor</span></div>
+            <div class="inputs-grid" id="aytInputs"></div>
+          </div>
+
+          <div class="field" id="ydtBlock" hidden>
+            <div class="label">YDT net <span class="hint">opsiyonel</span></div>
+            <div class="inputs-grid">
+              <div class="input"><label for="ydtNet">YDT (0–80)</label><input id="ydtNet" type="number" min="0" max="80" step="0.25" placeholder="örn. 40"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="label">Güçlü dersler <span class="hint">çoklu seçim</span></div>
+            <div class="chips" data-group="strengths" data-multi="true" role="group" aria-label="Güçlü dersler" id="strengthsChips"></div>
+          </div>
+
+          <div class="field">
+            <div class="label">Zayıf dersler <span class="hint">çoklu seçim</span></div>
+            <div class="chips" data-group="weaknesses" data-multi="true" role="group" aria-label="Zayıf dersler" id="weaknessesChips"></div>
+          </div>
+
+          <p class="helper" style="margin-top:14px">İstersen bu adımı atlayabilirsin. Zayıf ders seçmen önerilerin kalitesini artırır.</p>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-section" data-step="3">
+          <div class="field">
+            <div class="label">Günlük çalışma süresi</div>
+            <div class="chips" data-group="dailyTime" role="radiogroup" aria-label="Günlük süre">
+              <label class="chip"><input type="radio" name="dailyTime" value="30 dk"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>30 dk</label>
+              <label class="chip"><input type="radio" name="dailyTime" value="60 dk"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>60 dk</label>
+              <label class="chip"><input type="radio" name="dailyTime" value="90 dk"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>90 dk</label>
+              <label class="chip"><input type="radio" name="dailyTime" value="120+ dk"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>120+ dk</label>
+            </div>
+            <div class="err-msg" data-err="dailyTime" hidden>Bir süre seç.</div>
+          </div>
+
+          <div class="field">
+            <div class="label">Haftada kaç gün çalışabilirsin?</div>
+            <div class="chips" data-group="weeklyDays" role="radiogroup" aria-label="Haftalık gün">
+              <label class="chip"><input type="radio" name="weeklyDays" value="3 gün"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>3 gün</label>
+              <label class="chip"><input type="radio" name="weeklyDays" value="4 gün"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>4 gün</label>
+              <label class="chip"><input type="radio" name="weeklyDays" value="5 gün"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>5 gün</label>
+              <label class="chip"><input type="radio" name="weeklyDays" value="6 gün"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>6 gün</label>
+              <label class="chip"><input type="radio" name="weeklyDays" value="7 gün"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>7 gün</label>
+            </div>
+            <div class="err-msg" data-err="weeklyDays" hidden>Bir değer seç.</div>
+          </div>
+
+          <div class="field">
+            <div class="label">Öncelik</div>
+            <div class="chips" data-group="priority" role="radiogroup" aria-label="Öncelik">
+              <label class="chip"><input type="radio" name="priority" value="Net artırma"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Net artırma</label>
+              <label class="chip"><input type="radio" name="priority" value="Konu kapatma"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Konu kapatma</label>
+              <label class="chip"><input type="radio" name="priority" value="Deneme odak"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Deneme odak</label>
+              <label class="chip"><input type="radio" name="priority" value="Hız ve süre yönetimi"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Hız ve süre yönetimi</label>
+              <label class="chip"><input type="radio" name="priority" value="Hataları azaltma"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Hataları azaltma</label>
+            </div>
+            <div class="err-msg" data-err="priority" hidden>Bir öncelik seç.</div>
+          </div>
+
+          <div class="field">
+            <div class="label">Çalışma tarzı <span class="hint">opsiyonel</span></div>
+            <div class="chips" data-group="studyStyle" role="radiogroup" aria-label="Çalışma tarzı">
+              <label class="chip"><input type="radio" name="studyStyle" value="Kısa ve sık tekrar"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Kısa ve sık tekrar</label>
+              <label class="chip"><input type="radio" name="studyStyle" value="Uzun blok çalışma"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Uzun blok çalışma</label>
+              <label class="chip"><input type="radio" name="studyStyle" value="Deneme çözerek öğrenme"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Deneme çözerek öğrenme</label>
+              <label class="chip"><input type="radio" name="studyStyle" value="Konu anlatımı + soru"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Konu anlatımı + soru</label>
+              <label class="chip"><input type="radio" name="studyStyle" value="Emin değilim"><span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Emin değilim</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 — RESULT -->
+        <div class="step-section" data-step="4">
+          <div class="badge"><span class="pulse"></span> Başlangıç planın hazır</div>
+          <h2 class="title" style="font-size:24px;margin-top:12px">Profilin oluşturuldu.</h2>
+          <p class="subtitle" id="resultLead">Aşağıdaki plan, verdiğin bilgilere göre üretildi.</p>
+
+          <div class="result-header">
+            <span class="pill brand" id="r_profile">—</span>
+            <span class="pill" id="r_capacity">—</span>
+          </div>
+
+          <div class="plan-grid">
+            <div class="plan-card">
+              <h4>Günlük rutin önerisi</h4>
+              <p id="r_routine">—</p>
+            </div>
+            <div class="plan-card">
+              <h4>Haftalık odak</h4>
+              <p id="r_focus">—</p>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:24px">
+            <div class="label">Öncelikli 5 konu</div>
+            <div class="topics" id="r_topics"></div>
+          </div>
+
+          <div class="notice">Kişisel plan ilk tahmindir. Deneme çözdükçe hata verilerinle daha doğru hale gelir.</div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" id="goAppBtn" href="app.html">
+              Kişisel anasayfaya git
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <button class="btn btn-ghost" type="button" id="editBtn">Cevapları düzenle</button>
+            <a class="btn btn-link" href="index.html">Ana sayfaya dön</a>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" id="backBtn" hidden>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Geri
+          </button>
+          <span></span>
+          <button type="button" class="btn btn-primary" id="nextBtn">
+            Devam
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- SIDE -->
+    <aside class="side" aria-label="Canlı özet">
+      <div class="panel">
+        <h3>Canlı özet</h3>
+        <div class="profile">
+          <div class="row"><span class="k">Sınav</span><span class="v empty" id="s_exams">—</span></div>
+          <div class="row"><span class="k">Alan</span><span class="v empty" id="s_track">—</span></div>
+          <div class="row"><span class="k">Sınıf</span><span class="v empty" id="s_grade">—</span></div>
+          <div class="row"><span class="k">Günlük süre</span><span class="v empty" id="s_daily">—</span></div>
+          <div class="row"><span class="k">Zayıf dersler</span><span class="v empty" id="s_weak">—</span></div>
+        </div>
+        <div class="mini-stat">
+          <b id="s_focusTitle">Başlangıç odağı</b>
+          <span id="s_focusText">Bilgilerini girdikçe burada öneriler oluşacak.</span>
+        </div>
+      </div>
+      <p class="trust">Bilgilerin yalnızca tarayıcında saklanır. <br>Sonuçlar garanti değildir; veri arttıkça önerilerimiz iyileşir.</p>
+    </aside>
+  </div>
+</main>
+
+<div class="mobile-cta">
+  <button type="button" class="btn btn-primary" id="nextBtnMobile">Devam
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+</div>
+
+<script>
+(() => {
+  const STORAGE_KEY = 'openyks_onboarding_profile';
+  const SUBJECTS = ['Türkçe','Matematik','Sosyal','Fen','Fizik','Kimya','Biyoloji','Edebiyat','Tarih','Coğrafya','YDT'];
+
+  const TOPIC_MAP = {
+    'Matematik':[['Problemler','yüksek etki'],['Temel kavramlar','temel yapı'],['Fonksiyonlar','temel yapı'],['Denklem kurma','sık gelen konu'],['Grafik okuma','hızlı kazanım']],
+    'Türkçe':[['Paragrafta ana düşünce','yüksek etki'],['Sözcükte anlam','hızlı kazanım'],['Cümlede anlam','hızlı kazanım'],['Paragrafta yapı','sık gelen konu'],['Dil bilgisi temel ekler','temel yapı']],
+    'Fen':[['Elektrik','sık gelen konu'],['Kuvvet ve hareket','temel yapı'],['Basınç','hızlı kazanım'],['Isı-sıcaklık','hızlı kazanım'],['Kimyasal türler','temel yapı']],
+    'Sosyal':[['Tarih kronoloji','temel yapı'],['Coğrafya harita bilgisi','hızlı kazanım'],['Felsefe kavramları','hızlı kazanım'],['Din kültürü temel kavramlar','hızlı kazanım'],['Vatandaşlık','hızlı kazanım']],
+    'Fizik':[['Elektrik','sık gelen konu'],['Kuvvet ve hareket','temel yapı'],['Optik','hızlı kazanım'],['Basınç','hızlı kazanım'],['Dalgalar','sık gelen konu']],
+    'Kimya':[['Mol kavramı','temel yapı'],['Periyodik sistem','hızlı kazanım'],['Kimyasal tepkimeler','sık gelen konu'],['Asit-baz','sık gelen konu'],['Karışımlar','hızlı kazanım']],
+    'Biyoloji':[['Hücre','temel yapı'],['Kalıtım','sık gelen konu'],['Ekoloji','hızlı kazanım'],['Sistemler','sık gelen konu'],['Canlıların sınıflandırılması','hızlı kazanım']],
+    'Edebiyat':[['Edebi akımlar','temel yapı'],['Şiir bilgisi','hızlı kazanım'],['Roman-hikaye','sık gelen konu'],['Tanzimat','temel yapı'],['Cumhuriyet edebiyatı','sık gelen konu']],
+    'YDT':[['Vocabulary','yüksek etki'],['Reading','sık gelen konu'],['Cloze test','hızlı kazanım'],['Sentence completion','hızlı kazanım'],['Paragraph completion','hızlı kazanım']]
+  };
+
+  const DEFAULT_BY_TRACK = {
+    'Sayısal':[['Problemler','yüksek etki'],['Fonksiyonlar','temel yapı'],['Elektrik','sık gelen konu'],['Kimyasal türler','temel yapı'],['Paragrafta ana düşünce','hızlı kazanım']],
+    'Eşit Ağırlık':[['Problemler','yüksek etki'],['Paragrafta ana düşünce','yüksek etki'],['Edebi akımlar','temel yapı'],['Tarih kronoloji','temel yapı'],['Grafik okuma','hızlı kazanım']],
+    'Sözel':[['Paragrafta ana düşünce','yüksek etki'],['Edebi akımlar','temel yapı'],['Tarih kronoloji','temel yapı'],['Coğrafya harita bilgisi','hızlı kazanım'],['Felsefe kavramları','hızlı kazanım']],
+    'Dil':[['Vocabulary','yüksek etki'],['Reading','sık gelen konu'],['Grammar','temel yapı'],['Cloze test','hızlı kazanım'],['Paragraph completion','hızlı kazanım']],
+    'Henüz emin değilim':[['Paragrafta ana düşünce','yüksek etki'],['Problemler','yüksek etki'],['Temel kavramlar','temel yapı'],['Sözcükte anlam','hızlı kazanım'],['Hata analizi tekrarı','kalıcı gelişim']]
+  };
+
+  const AYT_FIELDS = {
+    'Sayısal':[['aytMat','AYT Matematik',40],['aytFiz','AYT Fizik',14],['aytKim','AYT Kimya',13],['aytBio','AYT Biyoloji',13]],
+    'Eşit Ağırlık':[['aytMat','AYT Matematik',40],['aytEde','AYT Edebiyat',24],['aytTar','AYT Tarih',10],['aytCog','AYT Coğrafya',6]],
+    'Sözel':[['aytEde','AYT Edebiyat',24],['aytTar','AYT Tarih',10],['aytCog','AYT Coğrafya',6]],
+    'Dil':[],
+    'Henüz emin değilim':[['aytMat','AYT Matematik',40],['aytEde','AYT Edebiyat',24]]
+  };
+
+  // State
+  const state = {
+    exams: [],
+    track: '',
+    grade: '',
+    targetScore: '',
+    targetRank: '',
+    nets: {},
+    strengths: [],
+    weaknesses: [],
+    dailyTime: '',
+    weeklyDays: '',
+    priority: '',
+    studyStyle: '',
+    recommendedTopics: [],
+    step: 1,
+    completed: false
+  };
+
+  const $ = (s,r=document)=>r.querySelector(s);
+  const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+
+  // Build subject chips for strengths/weaknesses
+  const buildSubjectChips = (container,group)=>{
+    container.innerHTML = SUBJECTS.map(s=>`
+      <label class="chip"><input type="checkbox" value="${s}">
+        <span class="check"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>${s}</label>`).join('');
+  };
+  buildSubjectChips($('#strengthsChips'),'strengths');
+  buildSubjectChips($('#weaknessesChips'),'weaknesses');
+
+  // Chip selection logic
+  document.addEventListener('change', e=>{
+    const inp = e.target;
+    if(!inp.matches('.chip input')) return;
+    const chip = inp.closest('.chip');
+    const group = chip.parentElement;
+    const name = group.dataset.group;
+    const multi = group.dataset.multi === 'true';
+    if(!multi){
+      group.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+      chip.classList.add('selected');
+      state[name] = inp.value;
+    } else {
+      if(inp.checked) chip.classList.add('selected'); else chip.classList.remove('selected');
+      state[name] = group.querySelectorAll('input:checked').length
+        ? Array.from(group.querySelectorAll('input:checked')).map(i=>i.value) : [];
+      // mutually exclusive strengths/weaknesses
+      if(name==='strengths' || name==='weaknesses'){
+        const other = name==='strengths' ? 'weaknesses' : 'strengths';
+        const otherGroup = document.querySelector(`[data-group="${other}"]`);
+        if(inp.checked){
+          const otherInput = otherGroup.querySelector(`input[value="${inp.value}"]`);
+          if(otherInput && otherInput.checked){
+            otherInput.checked = false;
+            otherInput.closest('.chip').classList.remove('selected');
+            state[other] = state[other].filter(v=>v!==inp.value);
+          }
+        }
+      }
+    }
+    onStateChange();
+  });
+
+  // Inputs
+  ['targetScore','targetRank'].forEach(id=>{
+    $('#'+id).addEventListener('input', e=>{ state[id] = e.target.value; onStateChange(); });
+  });
+  const NET_INPUTS = ['tytTurkce','tytSosyal','tytMatematik','tytFen','ydtNet'];
+  const bindNet = id => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('input', e=>{
+      const v = e.target.value;
+      const min = parseFloat(el.min), max = parseFloat(el.max);
+      const num = parseFloat(v);
+      el.parentElement.classList.toggle('err', v!=='' && (isNaN(num)||num<min||num>max));
+      state.nets[id] = v===''? undefined : num;
+      onStateChange();
+    });
+  };
+  NET_INPUTS.forEach(bindNet);
+
+  // Render AYT inputs by track
+  const renderAytInputs = ()=>{
+    const block = $('#aytBlock');
+    const ydtBlock = $('#ydtBlock');
+    const wantAyt = state.exams.includes('AYT');
+    const wantYdt = state.exams.includes('YDT') || state.track==='Dil';
+    ydtBlock.hidden = !wantYdt;
+    if(!wantAyt || !state.track){ block.hidden = true; return; }
+    const fields = AYT_FIELDS[state.track] || [];
+    if(!fields.length){ block.hidden = true; return; }
+    block.hidden = false;
+    $('#aytInputs').innerHTML = fields.map(([id,label,max])=>`
+      <div class="input"><label for="${id}">${label} (0–${max})</label>
+        <input id="${id}" type="number" min="0" max="${max}" step="0.25" placeholder="0–${max}"
+          value="${state.nets[id]??''}"></div>`).join('');
+    fields.forEach(([id])=>bindNet(id));
+  };
+
+  // Step navigation
+  const stepTitles = ['Hedef ve seviye','Mevcut durum','Zaman ve tercih','Başlangıç planın'];
+  const stepHeaders = [
+    ['Önce hedefini tanıyalım.','Birkaç kısa bilgiyle sana daha anlamlı bir başlangıç planı hazırlayalım.'],
+    ['Şu an nerede olduğunu görelim.','Netlerini bilmiyorsan sorun değil. Yaklaşık değerler ya da güçlü-zayıf ders seçimi yeterli.'],
+    ['Planını gerçek hayatına uyduralım.','Sürdürülebilir bir plan, mükemmel görünen ama uygulanmayan plandan daha değerlidir.'],
+    ['Başlangıç planın hazır.','Aşağıdaki plan, verdiğin bilgilere göre üretildi.']
+  ];
+
+  const validateStep = (step)=>{
+    let ok = true;
+    const showErr = (k,v)=>{ const el=document.querySelector(`[data-err="${k}"]`); if(el) el.hidden=!v; };
+    if(step===1){
+      const e1 = state.exams.length>0; showErr('exams',!e1); ok = ok && e1;
+      const e2 = !!state.track; showErr('track',!e2); ok = ok && e2;
+      const e3 = !!state.grade; showErr('grade',!e3); ok = ok && e3;
+    }
+    if(step===3){
+      const e1 = !!state.dailyTime; showErr('dailyTime',!e1); ok = ok && e1;
+      const e2 = !!state.weeklyDays; showErr('weeklyDays',!e2); ok = ok && e2;
+      const e3 = !!state.priority; showErr('priority',!e3); ok = ok && e3;
+    }
+    return ok;
+  };
+
+  const goStep = (n)=>{
+    if(n>4) n=4; if(n<1) n=1;
+    state.step = n;
+    $$('.step-section').forEach(s=>s.classList.toggle('active', +s.dataset.step===n));
+    $('#curStep').textContent = n;
+    $('#stepTitle').textContent = stepTitles[n-1];
+    $('#ob-title').textContent = stepHeaders[n-1][0];
+    $('#ob-sub').textContent = stepHeaders[n-1][1];
+    for(let i=1;i<=4;i++){
+      const fill = document.getElementById('fill'+i);
+      fill.style.width = n>i ? '100%' : (n===i ? '60%' : '0%');
+    }
+    $('#backBtn').hidden = n===1 || n===4;
+    const nextBtn = $('#nextBtn'); const mobileBtn = $('#nextBtnMobile');
+    if(n===3){ nextBtn.innerHTML = 'Planı oluştur <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'; mobileBtn.innerHTML = nextBtn.innerHTML; }
+    else if(n===4){ nextBtn.style.display='none'; mobileBtn.style.display='none'; }
+    else { nextBtn.style.display=''; mobileBtn.style.display=''; nextBtn.innerHTML = 'Devam <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'; mobileBtn.innerHTML = nextBtn.innerHTML; }
+    if(n===2) renderAytInputs();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  const handleNext = ()=>{
+    if(state.step===4) return;
+    if(!validateStep(state.step)){
+      const firstErr = document.querySelector('.err-msg:not([hidden])');
+      if(firstErr) firstErr.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    if(state.step===3){ buildResult(); persist(); goStep(4); return; }
+    persist(); goStep(state.step+1);
+  };
+  $('#nextBtn').addEventListener('click',handleNext);
+  $('#nextBtnMobile').addEventListener('click',handleNext);
+  $('#backBtn').addEventListener('click',()=>goStep(state.step-1));
+  $('#editBtn').addEventListener('click',()=>goStep(1));
+
+  // Enter to advance
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Enter' && state.step<4 && !e.target.matches('textarea')){
+      const tag = (e.target.tagName||'').toLowerCase();
+      if(tag==='button') return;
+      e.preventDefault(); handleNext();
+    }
+  });
+
+  // Save CTA href
+  $('#goAppBtn').addEventListener('click',()=>{ state.completed = true; persist(); });
+
+  // Persist
+  const persist = ()=>{
+    try{
+      const payload = {
+        exams:state.exams, track:state.track, grade:state.grade,
+        targetScore:state.targetScore, targetRank:state.targetRank,
+        nets:state.nets, strengths:state.strengths, weaknesses:state.weaknesses,
+        dailyTime:state.dailyTime, weeklyDays:state.weeklyDays,
+        priority:state.priority, studyStyle:state.studyStyle,
+        recommendedTopics:state.recommendedTopics,
+        step:state.step, completed:state.completed,
+        createdAt:new Date().toISOString()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    }catch(e){}
+  };
+
+  // Restore
+  const restore = ()=>{
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return false;
+      const d = JSON.parse(raw);
+      Object.assign(state,d);
+      // re-apply selections
+      const applyMulti = (group, values)=>{
+        const g = document.querySelector(`[data-group="${group}"]`);
+        if(!g) return;
+        (values||[]).forEach(v=>{
+          const inp = g.querySelector(`input[value="${CSS.escape(v)}"]`);
+          if(inp){ inp.checked = true; inp.closest('.chip').classList.add('selected'); }
+        });
+      };
+      const applySingle = (group, value)=>{
+        if(!value) return;
+        const g = document.querySelector(`[data-group="${group}"]`);
+        if(!g) return;
+        const inp = g.querySelector(`input[value="${CSS.escape(value)}"]`);
+        if(inp){ inp.checked = true; inp.closest('.chip').classList.add('selected'); }
+      };
+      applyMulti('exams', d.exams);
+      applySingle('track', d.track);
+      applySingle('grade', d.grade);
+      applyMulti('strengths', d.strengths);
+      applyMulti('weaknesses', d.weaknesses);
+      applySingle('dailyTime', d.dailyTime);
+      applySingle('weeklyDays', d.weeklyDays);
+      applySingle('priority', d.priority);
+      applySingle('studyStyle', d.studyStyle);
+      if(d.targetScore) $('#targetScore').value = d.targetScore;
+      if(d.targetRank) $('#targetRank').value = d.targetRank;
+      Object.entries(d.nets||{}).forEach(([k,v])=>{
+        const el = document.getElementById(k);
+        if(el) el.value = v;
+      });
+      return true;
+    }catch(e){ return false; }
+  };
+
+  // Live summary
+  const onStateChange = ()=>{
+    const set = (id, val, empty='—')=>{
+      const el = document.getElementById(id);
+      const has = val && (Array.isArray(val)?val.length:true);
+      el.textContent = has ? (Array.isArray(val)?val.join(', '):val) : empty;
+      el.classList.toggle('empty', !has);
+    };
+    set('s_exams', state.exams);
+    set('s_track', state.track);
+    set('s_grade', state.grade);
+    set('s_daily', state.dailyTime);
+    set('s_weak', state.weaknesses);
+    // focus suggestion preview
+    if(state.weaknesses.length){
+      $('#s_focusTitle').textContent = 'Başlangıç odağı';
+      $('#s_focusText').textContent = `${state.weaknesses[0]} dersinde temel konularla başlamak iyi bir giriş olur.`;
+    } else if(state.track){
+      $('#s_focusTitle').textContent = 'Önerilen yön';
+      $('#s_focusText').textContent = `${state.track} için yüksek getirili konularla başlayabilirsin.`;
+    } else {
+      $('#s_focusTitle').textContent = 'Başlangıç odağı';
+      $('#s_focusText').textContent = 'Bilgilerini girdikçe burada öneriler oluşacak.';
+    }
+    if(state.step===2) renderAytInputs();
+  };
+
+  // Build result
+  const buildResult = ()=>{
+    const profileBits = [state.grade, state.track, state.exams.join(' + ')+' odaklı'].filter(Boolean);
+    $('#r_profile').textContent = profileBits.join(' · ');
+    $('#r_capacity').textContent = `Haftada ${state.weeklyDays||'?'} · günde ${state.dailyTime||'?'}`;
+
+    const routineMap = {
+      '30 dk':'Kısa tekrar + 15–20 soru. Günde 1 mikro hedef belirle.',
+      '60 dk':'1 konu tekrarı + 25–35 soru. Hatalı soruları işaretle.',
+      '90 dk':'1 konu + 40 soru + kısa hata analizi.',
+      '120+ dk':'1 ana konu + mini deneme + detaylı hata analizi.'
+    };
+    $('#r_routine').textContent = routineMap[state.dailyTime] || 'Sürdürülebilir bir rutinle başla; süreyi kademeli artır.';
+    const focusMap = {
+      'Net artırma':'Zayıf derslerde yüksek getirili konulara odaklan.',
+      'Konu kapatma':'Eksik konuları planlı sırayla tamamla.',
+      'Deneme odak':'Haftada en az 1 tam deneme + analiz.',
+      'Hız ve süre yönetimi':'Süreli mini denemelerle tempo çalış.',
+      'Hataları azaltma':'Hata defteri tut, tekrarlayan hataları gruplandır.'
+    };
+    $('#r_focus').textContent = focusMap[state.priority] || 'Belirlediğin önceliğe göre haftalık odak seç.';
+
+    // Topics
+    let pool = [];
+    if(state.weaknesses.length){
+      state.weaknesses.forEach(w=>{ if(TOPIC_MAP[w]) pool.push(...TOPIC_MAP[w]); });
+    }
+    if(pool.length < 5){
+      const def = DEFAULT_BY_TRACK[state.track] || DEFAULT_BY_TRACK['Henüz emin değilim'];
+      pool.push(...def);
+    }
+    // dedupe by name, take 5
+    const seen = new Set();
+    const topics = [];
+    for(const [name,tag] of pool){
+      if(seen.has(name)) continue;
+      seen.add(name); topics.push([name,tag]);
+      if(topics.length===5) break;
+    }
+    state.recommendedTopics = topics.map(([n,t])=>({name:n,tag:t}));
+
+    const tagClass = t=>{
+      if(t==='yüksek etki') return 'amber';
+      if(t==='hızlı kazanım') return 'green';
+      if(t==='sık gelen konu') return '';
+      if(t==='kalıcı gelişim') return 'violet';
+      return 'violet';
+    };
+    $('#r_topics').innerHTML = topics.map(([n,t],i)=>`
+      <div class="topic">
+        <div class="num">${i+1}</div>
+        <div><div class="name">${n}</div><div class="sub">öncelikli başlangıç konusu</div></div>
+        <span class="tag ${tagClass(t)}">${t}</span>
+      </div>`).join('');
+  };
+
+  // Init: handle resume
+  const hadData = restore();
+  if(hadData && (state.completed || state.step>1)){
+    const resume = $('#resume');
+    resume.hidden = false;
+    $('#continueBtn').addEventListener('click',()=>{
+      resume.hidden = true;
+      onStateChange();
+      if(state.completed){ buildResult(); goStep(4); }
+      else goStep(state.step||1);
+    });
+    $('#restartBtn').addEventListener('click',()=>{
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    });
+  }
+  onStateChange();
+  goStep(state.step||1);
+})();
+</script>
+</body>
+</html>
