@@ -1,185 +1,341 @@
 <!doctype html>
 <html lang="tr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>openyks — YKS'yi veriyle çalış</title>
-    <meta name="description" content="Geçmiş YKS sorularını çöz, denemelerini analiz et, sana özel çalışma planını gör. Açık kaynak, tarayıcıda çalışır, ücretsiz." />
-    <meta property="og:title" content="openyks — YKS'yi veriyle çalış" />
-    <meta property="og:description" content="Geçmiş sorular + interaktif deneme + kişiye özel analiz. Tarayıcında, ücretsiz." />
-    <meta property="og:type" content="website" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-              body: ['Inter', 'system-ui', 'sans-serif'],
-            },
-            colors: {
-              bg: '#0b0d17',
-              card: '#11141f',
-              border: '#1f2333',
-              muted: '#8a90a6',
-              fg: '#e8eaf2',
-              primary: '#6366f1',
-              'primary-fg': '#ffffff',
-              accent: '#1a1f2e',
-            },
-          },
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>openyks — YKS'yi veriyle çalış</title>
+<meta name="description" content="Geçmiş YKS sorularını çöz, denemelerini analiz et, sıradaki çalışma adımını gör. Ücretsiz, açık kaynak, tarayıcında çalışır. Hesap gerekmez." />
+<meta property="og:title" content="openyks — YKS'yi veriyle çalış" />
+<meta property="og:description" content="Geçmiş sorular + interaktif deneme + kişisel analiz. Hesapsız, ücretsiz, tarayıcında." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+          body: ['Inter', 'system-ui', 'sans-serif'],
         },
-      };
-    </script>
-    <style>
-      body { background:#0b0d17; color:#e8eaf2; font-family: Inter, system-ui, sans-serif; }
-      .font-display { font-family: "Space Grotesk", system-ui, sans-serif; }
-      .hero-glow { background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99,102,241,0.30), transparent); }
-      .cta-glow { background-image: radial-gradient(circle at 50% 0%, rgba(99,102,241,0.22), transparent 60%); }
-      details > summary { list-style: none; cursor: pointer; }
-      details > summary::-webkit-details-marker { display: none; }
-      details[open] .chev { transform: rotate(180deg); }
-      .chev { transition: transform .2s; }
-    </style>
-  </head>
-  <body class="min-h-screen">
-    <header class="sticky top-0 z-40 border-b border-border/60 bg-bg/80 backdrop-blur">
-      <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a href="./index.html" class="font-display text-xl font-bold tracking-tight">open<span class="text-primary">yks</span></a>
-        <a href="./onboarding.html" class="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg transition hover:opacity-90">
-          Hemen Başla →
-        </a>
+        colors: {
+          bg: '#0b0d17',
+          surface: '#11142087',
+          card: '#141828',
+          border: '#222842',
+          fg: '#e7e9f3',
+          muted: '#9aa0bd',
+          primary: '#6366f1',
+          'primary-2': '#8b5cf6',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#0b0d17; color:#e7e9f3; font-family:'Inter',system-ui,sans-serif; }
+  .font-display { font-family:'Space Grotesk',system-ui,sans-serif; }
+  .hero-glow {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99,102,241,0.35), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 10%, rgba(139,92,246,0.25), transparent 60%);
+  }
+  details > summary { list-style:none; cursor:pointer; }
+  details > summary::-webkit-details-marker { display:none; }
+  details[open] .chev { transform: rotate(180deg); }
+  .btn-primary { background:#6366f1; color:white; transition:transform .15s ease, opacity .15s ease, box-shadow .15s ease; box-shadow:0 10px 30px -10px rgba(99,102,241,.55); }
+  .btn-primary:hover { transform: translateY(-1px); opacity:.95; }
+  .btn-ghost { background:#141828; border:1px solid #222842; color:#e7e9f3; transition: background .15s ease; }
+  .btn-ghost:hover { background:#1a1f33; }
+  .ring-focus:focus-visible { outline:2px solid #8b5cf6; outline-offset:2px; border-radius:9999px; }
+</style>
+</head>
+<body class="font-body antialiased">
+
+<!-- NAV -->
+<header class="sticky top-0 z-40 border-b border-border/60 bg-bg/80 backdrop-blur">
+  <div class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+    <a href="#" class="font-display text-xl font-bold tracking-tight">open<span class="text-primary">yks</span></a>
+    <nav class="hidden md:flex items-center gap-7 text-sm text-muted">
+      <a href="#ozellikler" class="hover:text-fg">Özellikler</a>
+      <a href="#nasil-calisir" class="hover:text-fg">Nasıl çalışır</a>
+      <a href="#neden" class="hover:text-fg">Neden openyks</a>
+      <a href="#sss" class="hover:text-fg">SSS</a>
+      <a href="https://github.com" target="_blank" rel="noreferrer" class="hover:text-fg">GitHub</a>
+    </nav>
+    <a href="onboarding.html" class="btn-primary ring-focus inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium">
+      Hemen Başla
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div aria-hidden class="absolute inset-0 -z-10 hero-glow"></div>
+  <div class="mx-auto max-w-4xl px-6 pt-24 sm:pt-32 pb-20 text-center">
+    <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted">
+      <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+      Açık kaynak · Yapım aşamasında
+    </span>
+    <h1 class="mt-6 font-display text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight">
+      YKS'yi <span class="text-primary">veriyle</span> çalış.
+    </h1>
+    <p class="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-muted">
+      Geçmiş soruları çöz, denemelerini analiz et, sıradaki çalışma adımını gör.
+      Hesapsız, ücretsiz, tarayıcında.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+      <a href="onboarding.html" class="btn-primary ring-focus inline-flex items-center gap-2 rounded-full px-6 py-3 text-base font-semibold">
+        Hemen Başla
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="#nasil-calisir" class="btn-ghost ring-focus inline-flex items-center gap-2 rounded-full px-6 py-3 text-base font-medium">
+        Nasıl çalışır?
+      </a>
+    </div>
+    <p class="mt-5 text-sm text-muted">TYT · AYT · YDT · Veriler cihazında kalır</p>
+  </div>
+</section>
+
+<!-- TRUSTBAR -->
+<section class="border-y border-border/60 bg-card/40">
+  <div class="mx-auto max-w-6xl px-6 py-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted">
+    <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Ücretsiz</span>
+    <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Kayıt yok</span>
+    <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Veriler cihazında</span>
+    <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Açık kaynak</span>
+    <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Reklamsız</span>
+    <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Kurulum yok</span>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="ozellikler" class="mx-auto max-w-6xl px-6 py-24">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="font-display text-3xl sm:text-4xl font-bold">Üç şey, doğru yapılmış.</h2>
+    <p class="mt-3 text-muted">Soru havuzu, gerçekçi deneme ve kişisel analiz — tek yerde.</p>
+  </div>
+  <div class="mt-12 grid gap-5 md:grid-cols-3">
+    <article class="rounded-2xl border border-border bg-card p-6 transition hover:border-primary/40">
+      <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6a2 2 0 0 1 2-2h14"/><path d="M21 6v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6"/><path d="M7 8v12"/></svg>
       </div>
-    </header>
-
-    <main>
-      <!-- Hero -->
-      <section class="relative overflow-hidden">
-        <div aria-hidden class="absolute inset-0 -z-10 opacity-60 hero-glow"></div>
-        <div class="mx-auto max-w-4xl px-6 pb-20 pt-24 text-center sm:pt-32">
-          <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted">
-            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-            Açık kaynak · Yapım aşamasında
-          </span>
-          <h1 class="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-            YKS'yi <span class="text-primary">veriyle</span> çalış.
-          </h1>
-          <p class="mx-auto mt-6 max-w-2xl text-lg text-muted sm:text-xl">
-            Geçmiş soruları çöz, denemelerini analiz et, sana özel çalışma planını gör. Tamamı tarayıcında, ücretsiz.
-          </p>
-          <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <a href="./onboarding.html" class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-fg shadow-lg shadow-primary/20 transition hover:-translate-y-px hover:opacity-95">
-              Hemen Başla →
-            </a>
-            <a href="#nasil-calisir" class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-base font-medium text-fg transition hover:bg-accent">
-              Nasıl çalışır?
-            </a>
-          </div>
-          <p class="mt-5 text-sm text-muted">Ücretsiz · Kayıt yok · Tarayıcıda çalışır</p>
-        </div>
-      </section>
-
-      <!-- TrustBar -->
-      <section class="border-y border-border/60 bg-card/40">
-        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-6 py-6 text-sm text-muted">
-          <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Açık kaynak</span>
-          <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Tarayıcıda çalışır</span>
-          <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Kurulum gerektirmez</span>
-          <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Veri temelli</span>
-          <span class="inline-flex items-center gap-2"><span class="text-primary">✓</span> Reklamsız</span>
-        </div>
-      </section>
-
-      <!-- Features -->
-      <section class="mx-auto max-w-6xl px-6 py-24">
-        <div class="mx-auto max-w-2xl text-center">
-          <h2 class="font-display text-3xl font-bold sm:text-4xl">Üç şey, doğru yapılmış.</h2>
-          <p class="mt-3 text-muted">Soru havuzu, deneme deneyimi ve analiz — hepsi tek yerde.</p>
-        </div>
-        <div class="mt-12 grid gap-5 md:grid-cols-3">
-          <div class="rounded-2xl border border-border bg-card p-6 transition hover:border-primary/40">
-            <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary text-xl">📚</div>
-            <h3 class="mt-5 font-display text-lg font-semibold">Geçmiş Sınav Soruları</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">Yıllara göre filtrele, konuya göre çöz, çözüm geçmişini sakla.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-card p-6 transition hover:border-primary/40">
-            <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary text-xl">⏱</div>
-            <h3 class="mt-5 font-display text-lg font-semibold">İnteraktif Deneme</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">Süre, optik form mantığı ve anında değerlendirme ile gerçek sınav hissi.</p>
-          </div>
-          <div class="rounded-2xl border border-border bg-card p-6 transition hover:border-primary/40">
-            <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary text-xl">📈</div>
-            <h3 class="mt-5 font-display text-lg font-semibold">Kişisel Analiz & Öneri</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">Zayıf konularını, hız–doğruluk dengeni ve sıradaki çalışma adımını gör.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- HowItWorks -->
-      <section id="nasil-calisir" class="border-t border-border/60 bg-card/40">
-        <div class="mx-auto max-w-6xl px-6 py-24">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="font-display text-3xl font-bold sm:text-4xl">3 adımda başla.</h2>
-            <p class="mt-3 text-muted">Hesap yok, kurulum yok. Açıp çalışmaya başla.</p>
-          </div>
-          <ol class="mt-12 grid gap-5 md:grid-cols-3">
-            <li class="rounded-2xl border border-border bg-bg p-6">
-              <div class="font-display text-5xl font-bold leading-none text-primary/30">01</div>
-              <h3 class="mt-4 font-display text-lg font-semibold">Profilini oluştur</h3>
-              <p class="mt-2 text-sm leading-relaxed text-muted">Alanını ve hedefini seç. 30 saniye sürer.</p>
-            </li>
-            <li class="rounded-2xl border border-border bg-bg p-6">
-              <div class="font-display text-5xl font-bold leading-none text-primary/30">02</div>
-              <h3 class="mt-4 font-display text-lg font-semibold">Soru çöz veya deneme yap</h3>
-              <p class="mt-2 text-sm leading-relaxed text-muted">Geçmiş YKS sorularıyla pratik yap ya da tam deneme başlat.</p>
-            </li>
-            <li class="rounded-2xl border border-border bg-bg p-6">
-              <div class="font-display text-5xl font-bold leading-none text-primary/30">03</div>
-              <h3 class="mt-4 font-display text-lg font-semibold">Analizi ve öneriyi gör</h3>
-              <p class="mt-2 text-sm leading-relaxed text-muted">Verilerinden çıkan zayıf konu listesi ve sıradaki adım.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section class="mx-auto max-w-3xl px-6 py-24">
-        <div class="text-center">
-          <h2 class="font-display text-3xl font-bold sm:text-4xl">Sıkça sorulanlar</h2>
-        </div>
-        <div class="mt-10 divide-y divide-border rounded-2xl border border-border bg-card">
-          <details open class="group">
-            <summary class="flex items-center justify-between gap-4 px-5 py-4"><span class="font-medium">openyks ücretli mi?</span><span class="chev text-muted">▾</span></summary>
-            <div class="px-5 pb-4 text-sm text-muted">Hayır. Tamamen ücretsiz ve açık kaynak.</div>
-          </details>
-          <details><summary class="flex items-center justify-between gap-4 px-5 py-4"><span class="font-medium">Kayıt olmam gerekiyor mu?</span><span class="chev text-muted">▾</span></summary><div class="px-5 pb-4 text-sm text-muted">Hayır. Veriler tarayıcında tutulur.</div></details>
-          <details><summary class="flex items-center justify-between gap-4 px-5 py-4"><span class="font-medium">Verim nerede saklanıyor?</span><span class="chev text-muted">▾</span></summary><div class="px-5 pb-4 text-sm text-muted">Cihazında. Sunucuya gönderilmez.</div></details>
-          <details><summary class="flex items-center justify-between gap-4 px-5 py-4"><span class="font-medium">Sorular nereden geliyor?</span><span class="chev text-muted">▾</span></summary><div class="px-5 pb-4 text-sm text-muted">Açık kaynaklı geçmiş YKS soru havuzlarından.</div></details>
-          <details><summary class="flex items-center justify-between gap-4 px-5 py-4"><span class="font-medium">Mobilde çalışıyor mu?</span><span class="chev text-muted">▾</span></summary><div class="px-5 pb-4 text-sm text-muted">Evet, modern her tarayıcıda.</div></details>
-          <details><summary class="flex items-center justify-between gap-4 px-5 py-4"><span class="font-medium">Katkıda bulunabilir miyim?</span><span class="chev text-muted">▾</span></summary><div class="px-5 pb-4 text-sm text-muted">Evet, proje GitHub'da açık kaynak.</div></details>
-        </div>
-      </section>
-
-      <!-- Final CTA -->
-      <section class="mx-auto max-w-5xl px-6 pb-24">
-        <div class="relative overflow-hidden rounded-3xl border border-border bg-card px-8 py-14 text-center cta-glow">
-          <h2 class="font-display text-3xl font-bold sm:text-4xl">Verinle çalışmaya başla.</h2>
-          <p class="mt-3 text-muted">Birkaç saniye sürer, hesaba gerek yok.</p>
-          <a href="./onboarding.html" class="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-fg shadow-lg shadow-primary/20 transition hover:opacity-95">
-            Hemen Başla →
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-border/60">
-      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted sm:flex-row">
-        <div><span class="font-display font-semibold text-fg">openyks</span> · Açık kaynak · © 2026</div>
-        <a href="https://github.com" target="_blank" rel="noreferrer" class="hover:text-fg">GitHub</a>
+      <h3 class="mt-5 font-display text-lg font-semibold">Doğru soruyla pratik yap.</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muted">Geçmiş YKS sorularını yıla, derse ve konuya göre filtrele. Çözüm geçmişini takip et.</p>
+    </article>
+    <article class="rounded-2xl border border-border bg-card p-6 transition hover:border-primary/40">
+      <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M9 2h6"/></svg>
       </div>
-    </footer>
-  </body>
+      <h3 class="mt-5 font-display text-lg font-semibold">Sınav gününü prova et.</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muted">Süre, optik form mantığı ve anında değerlendirmeyle gerçek sınav koşulu.</p>
+    </article>
+    <article class="rounded-2xl border border-border bg-card p-6 transition hover:border-primary/40">
+      <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>
+      </div>
+      <h3 class="mt-5 font-display text-lg font-semibold">Bir sonraki adımı gör.</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muted">Zayıf konular, hız–doğruluk dengesi ve önerilen çalışma sırası.</p>
+    </article>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="nasil-calisir" class="border-t border-border/60 bg-card/40">
+  <div class="mx-auto max-w-6xl px-6 py-24">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold">3 adımda başla.</h2>
+      <p class="mt-3 text-muted">Hesap yok, kurulum yok. Açıp çalışmaya başla.</p>
+    </div>
+    <ol class="mt-12 grid gap-5 md:grid-cols-3">
+      <li class="rounded-2xl border border-border bg-bg p-6">
+        <div class="font-display text-5xl font-bold leading-none text-primary/30">01</div>
+        <h3 class="mt-4 font-display text-lg font-semibold">Profilini seç</h3>
+        <p class="mt-2 text-sm text-muted">Alanını ve hedefini seç. 30 saniye.</p>
+      </li>
+      <li class="rounded-2xl border border-border bg-bg p-6">
+        <div class="font-display text-5xl font-bold leading-none text-primary/30">02</div>
+        <h3 class="mt-4 font-display text-lg font-semibold">Çöz</h3>
+        <p class="mt-2 text-sm text-muted">Geçmiş sorularla pratik yap ya da tam deneme başlat.</p>
+      </li>
+      <li class="rounded-2xl border border-border bg-bg p-6">
+        <div class="font-display text-5xl font-bold leading-none text-primary/30">03</div>
+        <h3 class="mt-4 font-display text-lg font-semibold">Analizi gör</h3>
+        <p class="mt-2 text-sm text-muted">Zayıf konular + sıradaki adım. Tekrar et.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- WHY OPENYKS -->
+<section id="neden" class="mx-auto max-w-6xl px-6 py-24">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="font-display text-3xl sm:text-4xl font-bold">Neden openyks?</h2>
+    <p class="mt-3 text-muted">Mevcut kaynaklarını bırakma — bir de stratejini ekle.</p>
+  </div>
+
+  <!-- Desktop table -->
+  <div class="mt-12 hidden md:block overflow-hidden rounded-2xl border border-border">
+    <table class="w-full text-left text-sm">
+      <thead class="bg-card text-muted">
+        <tr>
+          <th class="px-5 py-4 font-medium">Alternatif</th>
+          <th class="px-5 py-4 font-medium">Eksiği</th>
+          <th class="px-5 py-4 font-medium text-fg">openyks farkı</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-border bg-bg">
+        <tr>
+          <td class="px-5 py-4 font-medium">Dershane / koçluk</td>
+          <td class="px-5 py-4 text-muted">Pahalı, sabit program</td>
+          <td class="px-5 py-4">Kendi verine göre uyarlanır, ücretsiz</td>
+        </tr>
+        <tr>
+          <td class="px-5 py-4 font-medium">YouTube videoları</td>
+          <td class="px-5 py-4 text-muted">Pasif izleme</td>
+          <td class="px-5 py-4">Aktif çözüm + anında ölçüm</td>
+        </tr>
+        <tr>
+          <td class="px-5 py-4 font-medium">Kaynak kitaplar</td>
+          <td class="px-5 py-4 text-muted">Geri bildirim yok</td>
+          <td class="px-5 py-4">Zayıf konu listesi, hız–doğruluk analizi</td>
+        </tr>
+        <tr>
+          <td class="px-5 py-4 font-medium">Genel deneme uygulamaları</td>
+          <td class="px-5 py-4 text-muted">Reklam + hesap zorunluluğu</td>
+          <td class="px-5 py-4">Reklamsız, hesapsız, veriler cihazında</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mobile cards -->
+  <div class="mt-12 grid gap-4 md:hidden">
+    <div class="rounded-2xl border border-border bg-card p-5">
+      <h3 class="font-display font-semibold">Dershane / koçluk</h3>
+      <p class="mt-1 text-sm text-muted">Pahalı, sabit program.</p>
+      <p class="mt-2 text-sm">→ Kendi verine göre uyarlanır, ücretsiz.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-5">
+      <h3 class="font-display font-semibold">YouTube videoları</h3>
+      <p class="mt-1 text-sm text-muted">Pasif izleme.</p>
+      <p class="mt-2 text-sm">→ Aktif çözüm + anında ölçüm.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-5">
+      <h3 class="font-display font-semibold">Kaynak kitaplar</h3>
+      <p class="mt-1 text-sm text-muted">Geri bildirim yok.</p>
+      <p class="mt-2 text-sm">→ Zayıf konu listesi, hız–doğruluk analizi.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-5">
+      <h3 class="font-display font-semibold">Genel deneme uygulamaları</h3>
+      <p class="mt-1 text-sm text-muted">Reklam + hesap zorunluluğu.</p>
+      <p class="mt-2 text-sm">→ Reklamsız, hesapsız, veriler cihazında.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL / OPEN SOURCE STRIP -->
+<section class="border-y border-border/60 bg-card/40">
+  <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+    <p class="text-muted">
+      <span class="font-display font-semibold text-fg">Açık kaynak.</span>
+      Kodu inceleyebilir, hata bildirebilir, soru havuzuna katkı verebilirsin.
+    </p>
+    <a href="https://github.com" target="_blank" rel="noreferrer" class="btn-ghost ring-focus inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-medium">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.2 3.3-1.2.7 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      GitHub'da incele
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="sss" class="mx-auto max-w-3xl px-6 py-24">
+  <div class="text-center">
+    <h2 class="font-display text-3xl sm:text-4xl font-bold">Sıkça sorulanlar</h2>
+  </div>
+  <div class="mt-10 divide-y divide-border rounded-2xl border border-border bg-card">
+    <details open class="group">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4">
+        <span class="font-medium">openyks ücretli mi?</span>
+        <svg class="chev h-4 w-4 text-muted transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <p class="px-5 pb-4 text-sm text-muted">Hayır, tamamen ücretsiz. Açık kaynak; istersen koda bakabilirsin.</p>
+    </details>
+    <details class="group">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4">
+        <span class="font-medium">Kayıt olmam gerekiyor mu?</span>
+        <svg class="chev h-4 w-4 text-muted transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <p class="px-5 pb-4 text-sm text-muted">Hayır. Aç ve başla. Çalışma geçmişin sadece senin cihazında tutulur.</p>
+    </details>
+    <details class="group">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4">
+        <span class="font-medium">Verilerim nerede saklanıyor?</span>
+        <svg class="chev h-4 w-4 text-muted transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <p class="px-5 pb-4 text-sm text-muted">Tamamen tarayıcının yerel deposunda. Bizim sunucumuza hiçbir şey gönderilmez.</p>
+    </details>
+    <details class="group">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4">
+        <span class="font-medium">Sorular nereden geliyor?</span>
+        <svg class="chev h-4 w-4 text-muted transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <p class="px-5 pb-4 text-sm text-muted">Topluluk katkılarıyla derlenmiş, kamuya açık geçmiş YKS soru havuzlarından. Telif sahibinin itirazı olan içerikler kaldırılır.</p>
+    </details>
+    <details class="group">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4">
+        <span class="font-medium">Mobilde çalışıyor mu?</span>
+        <svg class="chev h-4 w-4 text-muted transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <p class="px-5 pb-4 text-sm text-muted">Evet — telefon, tablet, bilgisayar; modern her tarayıcıda.</p>
+    </details>
+    <details class="group">
+      <summary class="flex items-center justify-between gap-4 px-5 py-4">
+        <span class="font-medium">Katkıda bulunabilir miyim?</span>
+        <svg class="chev h-4 w-4 text-muted transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <p class="px-5 pb-4 text-sm text-muted">Evet. Proje GitHub'da; soru ekleyebilir, hata bildirebilir, kod katkısı yapabilirsin.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="mx-auto max-w-5xl px-6 pb-24">
+  <div class="relative overflow-hidden rounded-3xl border border-border bg-card px-8 py-14 text-center"
+       style="background-image: radial-gradient(circle at 50% 0%, rgba(99,102,241,0.22), transparent 60%);">
+    <h2 class="font-display text-3xl sm:text-4xl font-bold">Bugün bir denemeyle başla.</h2>
+    <p class="mt-3 text-muted">Hesap yok, kurulum yok. Birkaç saniye sürer.</p>
+    <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+      <a href="onboarding.html" class="btn-primary ring-focus inline-flex items-center gap-2 rounded-full px-6 py-3 text-base font-semibold">
+        Hemen Başla
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="https://github.com" target="_blank" rel="noreferrer" class="btn-ghost ring-focus inline-flex items-center gap-2 rounded-full px-6 py-3 text-base font-medium">
+        GitHub'da incele
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-border/60">
+  <div class="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-muted">
+    <div>
+      <span class="font-display font-semibold text-fg">openyks</span> · Açık kaynak · © 2026
+    </div>
+    <p class="text-xs text-muted text-center sm:text-right max-w-md">
+      openyks bağımsız, açık kaynak bir öğrenci aracıdır. ÖSYM ile bağlantılı değildir.
+    </p>
+  </div>
+</footer>
+
+</body>
 </html>
