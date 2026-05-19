@@ -1,0 +1,42 @@
+{
+  "2018": {
+    "tyt": "http://dokuman.osym.gov.tr/pdfdokuman/2018/YKS/TYT_01072018.pdf",
+    "ayt": "http://dokuman.osym.gov.tr/pdfdokuman/2018/YKS/AYT_01072018.pdf",
+    "ydt_ing": "http://dokuman.osym.gov.tr/pdfdokuman/2018/YKS/YDTING01072018.pdf"
+  },
+  "2019": {
+    "tyt": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/tyt_yks_2019_web.pdf",
+    "ayt": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/ayt_yks_2019_web.pdf",
+    "ydt_ing": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/ydt_ingilizce_yks_2019_web.pdf"
+  },
+  "2020": {
+    "tyt": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YKS/TSK/tyt_yks_2020.pdf",
+    "ayt": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YKS/TSK/ayt_yks_2020.pdf",
+    "ydt_ing": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YKS/TSK/ydt_ingilizce_yks_2020.pdf"
+  },
+  "2021": {
+    "tyt": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YKS/TSK/tyt_yks_2021.pdf",
+    "ayt": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YKS/TSK/ayt_yks_2021.pdf",
+    "ydt_ing": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YKS/TSK/ydt_ingilizce_yks_2021.pdf"
+  },
+  "2022": {
+    "tyt": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YKS/TSK/yks_2022_tyt.pdf",
+    "ayt": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YKS/TSK/yks_2022_ayt.pdf",
+    "ydt_ing": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YKS/TSK/yks_2022_ydt_ingilizce.pdf"
+  },
+  "2023": {
+    "tyt": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YKS/TSK/yks_tyt_2023_kitapcik_T23ky.pdf",
+    "ayt": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YKS/TSK/yks_ayt_2023_kitapcik_g5A2H.pdf",
+    "ydt_ing": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YKS/TSK/yks_ydt_ing_2023_kitapcik_Sp72a.pdf"
+  },
+  "2024": {
+    "tyt": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YKS/TSK/yks_tyt_2024_kitapcik_T24kt.pdf",
+    "ayt": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YKS/TSK/yks_ayt_2024_kitapcik_ts85k.pdf",
+    "ydt_ing": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YKS/TSK/yks_ydt_ing_2024_kitapcik_Sp865a.pdf"
+  },
+  "2025": {
+    "tyt": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YKS/TSK/yks_tyt_2025_kitapcik_d250.pdf",
+    "ayt": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YKS/TSK/yks_ayt_2025_kitapcik_st12.pdf",
+    "ydt_ing": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YKS/TSK/yks_ydt_ing_2025_kitapcik_Si42.pdf"
+  }
+}

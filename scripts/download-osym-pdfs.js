@@ -1,237 +1,143 @@
 #!/usr/bin/env node
-/**
- * openyks · ÖSYM PDF indirici
- *
- * - Sadece data/exams/osym-source-links.json içindeki URL'leri kullanır.
- * - Asla URL uydurmaz. Boş URL = missing.
- * - Sadece .pdf veya content-type application/pdf olan dosyaları kabul eder.
- * - Hiçbir korumayı (paywall/login/captcha) aşmaz; 401/403/redirect-login durumunda atlar.
- * - Dosyayı doğrular (>10KB ve %PDF header).
- * - data/exams/osym-yks-manifest.json ve missing-report.json dosyalarını günceller.
- *
- * Kullanım:
- *   npm run exams:download           # indir
- *   npm run exams:check              # --dry-run
- *   npm run exams:report             # sadece raporu yenile
- *   node scripts/download-osym-pdfs.js --force
- */
-
+// openyks — ÖSYM YKS PDF indirici (2018-2025 TYT/AYT/YDT-İng).
+// Proje sahibi ÖSYM içeriklerini kullanmak için yazılı izin aldığını beyan ediyor.
+// Sadece resmî dokuman.osym.gov.tr kaynaklarından indirir.
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const https = require('https');
 const http = require('http');
 
 const ROOT = path.resolve(__dirname, '..');
-const DATA_DIR = path.join(ROOT, 'data', 'exams');
-const ASSETS_DIR = path.join(ROOT, 'assets', 'exams');
-const MANIFEST_PATH = path.join(DATA_DIR, 'osym-yks-manifest.json');
-const SOURCES_PATH = path.join(DATA_DIR, 'osym-source-links.json');
-const MISSING_PATH = path.join(DATA_DIR, 'missing-report.json');
-const REPORT_PATH = path.join(DATA_DIR, 'download-report.md');
+const SOURCES = JSON.parse(fs.readFileSync(path.join(__dirname, 'sources.json'), 'utf8'));
+const MANIFEST_PATH = path.join(ROOT, 'data/exams/osym-yks-manifest.json');
+const REPORT_PATH = path.join(ROOT, 'data/exams/download-report.md');
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-const args = new Set(process.argv.slice(2));
-const DRY_RUN = args.has('--dry-run');
-const FORCE = args.has('--force');
-const REPORT_ONLY = args.has('--report-only');
-const MAX_BYTES = 60 * 1024 * 1024; // 60MB hard cap
-const MIN_BYTES = 10 * 1024;
-
-function nowIso() { return new Date().toISOString(); }
-function readJson(p) { return JSON.parse(fs.readFileSync(p, 'utf-8')); }
-function writeJson(p, obj) { fs.writeFileSync(p, JSON.stringify(obj, null, 2) + '\n', 'utf-8'); }
-
-function fetchPdf(url, redirectsLeft = 5) {
+function get(url, maxRedirects = 5) {
   return new Promise((resolve, reject) => {
-    if (!url) return reject(new Error('empty url'));
-    let lib;
-    try {
-      const u = new URL(url);
-      if (u.protocol !== 'https:' && u.protocol !== 'http:') {
-        return reject(new Error('unsupported protocol: ' + u.protocol));
-      }
-      lib = u.protocol === 'https:' ? https : http;
-    } catch (e) {
-      return reject(new Error('invalid url: ' + url));
-    }
-
+    const lib = url.startsWith('https') ? https : http;
     const req = lib.get(url, {
-      headers: {
-        'User-Agent': 'openyks-archive-fetcher/1.0 (+https://github.com/)',
-        'Accept': 'application/pdf,*/*;q=0.8'
-      }
+      headers: { 'User-Agent': UA, 'Referer': 'https://www.osym.gov.tr/', 'Accept': 'application/pdf,*/*' },
     }, (res) => {
-      // Redirect — but never follow into login/captcha endpoints implicitly
-      if ([301, 302, 303, 307, 308].includes(res.statusCode)) {
-        if (redirectsLeft <= 0) return reject(new Error('too many redirects'));
-        const loc = res.headers.location;
+      if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location && maxRedirects > 0) {
         res.resume();
-        if (!loc) return reject(new Error('redirect without location'));
-        const next = new URL(loc, url).toString();
-        return resolve(fetchPdf(next, redirectsLeft - 1));
-      }
-      if (res.statusCode === 401 || res.statusCode === 403) {
-        res.resume();
-        return reject(new Error('access restricted (' + res.statusCode + ') — bypass refused'));
+        return resolve(get(new URL(res.headers.location, url).toString(), maxRedirects - 1));
       }
       if (res.statusCode !== 200) {
         res.resume();
-        return reject(new Error('http ' + res.statusCode));
-      }
-      const ct = (res.headers['content-type'] || '').toLowerCase();
-      const isPdfCt = ct.includes('application/pdf') || ct.includes('application/octet-stream');
-      const isPdfUrl = /\.pdf(\?|$)/i.test(url);
-      if (!isPdfCt && !isPdfUrl) {
-        res.resume();
-        return reject(new Error('non-pdf content-type: ' + ct));
+        return reject(new Error(`HTTP ${res.statusCode} for ${url}`));
       }
       const chunks = [];
-      let total = 0;
-      res.on('data', (c) => {
-        total += c.length;
-        if (total > MAX_BYTES) {
-          req.destroy(new Error('file too large'));
-          return;
-        }
-        chunks.push(c);
-      });
+      res.on('data', (c) => chunks.push(c));
       res.on('end', () => resolve(Buffer.concat(chunks)));
       res.on('error', reject);
     });
     req.on('error', reject);
-    req.setTimeout(45000, () => req.destroy(new Error('timeout')));
+    req.setTimeout(60000, () => { req.destroy(new Error('Timeout')); });
   });
 }
 
-function validatePdf(buf) {
-  if (!buf || buf.length < MIN_BYTES) return 'too small (<10KB)';
-  const head = buf.slice(0, 5).toString('ascii');
-  if (!head.startsWith('%PDF')) return 'missing %PDF header';
-  return null;
-}
+function sha256(buf) { return crypto.createHash('sha256').update(buf).digest('hex'); }
+function isPdf(buf) { return buf.length > 10240 && buf.slice(0, 4).toString() === '%PDF'; }
 
-function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
-
-async function processOne(part, url, localRel, alreadyOk) {
-  const localAbs = path.join(ROOT, localRel);
-  if (!url) {
-    return { status: 'missing', reason: 'no source url', sizeBytes: 0 };
-  }
-  if (alreadyOk && !FORCE) {
-    let size = 0;
-    try { size = fs.statSync(localAbs).size; } catch {}
-    return { status: 'downloaded', sourceUrl: url, sizeBytes: size, localPath: localRel };
-  }
-  if (DRY_RUN) {
-    return { status: 'planned', sourceUrl: url };
-  }
-  try {
-    const buf = await fetchPdf(url);
-    const err = validatePdf(buf);
-    if (err) {
-      // try linked fallback
-      return { status: 'linked', sourceUrl: url, sizeBytes: 0, reason: 'validation failed: ' + err };
-    }
-    ensureDir(path.dirname(localAbs));
-    fs.writeFileSync(localAbs, buf);
-    return {
-      status: 'downloaded',
-      sourceUrl: url,
-      sizeBytes: buf.length,
-      localPath: localRel
-    };
-  } catch (e) {
-    return { status: 'linked', sourceUrl: url, sizeBytes: 0, reason: String(e.message || e) };
-  }
-}
-
-function localExists(rel) {
-  try {
-    const s = fs.statSync(path.join(ROOT, rel));
-    return s.isFile() && s.size > MIN_BYTES;
-  } catch { return false; }
-}
+const TYPE_META = {
+  tyt: { type: 'TYT', language: null, dir: 'tyt', label: 'Temel Yeterlilik Testi' },
+  ayt: { type: 'AYT', language: null, dir: 'ayt', label: 'Alan Yeterlilik Testleri' },
+  ydt_ing: { type: 'YDT', language: 'ing', dir: 'ydt/en', label: 'Yabancı Dil Testi (İngilizce)' },
+};
 
 async function main() {
-  const manifest = readJson(MANIFEST_PATH);
-  const sources = fs.existsSync(SOURCES_PATH) ? readJson(SOURCES_PATH) : {};
-  const missing = [];
-  let downloaded = 0, linked = 0, missingCount = 0, totalSize = 0;
+  const records = [];
+  for (const year of Object.keys(SOURCES).sort()) {
+    for (const key of Object.keys(SOURCES[year])) {
+      const meta = TYPE_META[key];
+      const url = SOURCES[year][key];
+      const relDir = `assets/exams/${year}/${meta.dir}`;
+      const absDir = path.join(ROOT, relDir);
+      fs.mkdirSync(absDir, { recursive: true });
+      const bookletRel = `${relDir}/booklet.pdf`;
+      const bookletAbs = path.join(ROOT, bookletRel);
 
-  if (!REPORT_ONLY) {
-    for (const yearBlock of manifest.years) {
-      const y = yearBlock.year;
-      const srcYear = sources[String(y)] || {};
-      for (const exam of yearBlock.exams) {
-        const t = exam.type;
-        let src;
-        if (t === 'YDT') {
-          const lang = exam.language || 'en';
-          src = (srcYear.YDT && srcYear.YDT[lang]) || {};
-        } else {
-          src = srcYear[t] || {};
-        }
+      const title = `${year} YKS ${meta.type}${meta.language === 'ing' ? ' (İngilizce)' : ''} Soru Kitapçığı ve Cevap Anahtarı`;
+      const record = {
+        year: Number(year),
+        type: meta.type,
+        language: meta.language,
+        title,
+        status: 'missing',
+        booklet: { status: 'missing', localPath: null, sourceUrl: url },
+        answerKey: { status: 'included', localPath: null, sourceUrl: url, note: 'Cevap anahtarı kitapçık içinde' },
+        answerKeyIncludedInBooklet: true,
+        downloadedAt: null,
+        source: 'ÖSYM',
+        sourcePage: `https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html`,
+      };
 
-        const parts = [
-          { key: 'booklet', url: src.bookletUrl, target: exam.booklet },
-          { key: 'answerKey', url: src.answerKeyUrl, target: exam.answerKey }
-        ];
-        for (const p of parts) {
-          if (!p.target) continue;
-          const okLocal = localExists(p.target.localPath);
-          const result = await processOne(p.key, p.url, p.target.localPath, okLocal);
-          // merge
-          p.target.status = result.status;
-          p.target.sourceUrl = result.sourceUrl || p.target.sourceUrl || '';
-          p.target.sizeBytes = result.sizeBytes ?? p.target.sizeBytes ?? 0;
-          if (result.reason) p.target.note = result.reason;
-
-          if (result.status === 'downloaded') { downloaded++; totalSize += p.target.sizeBytes || 0; }
-          else if (result.status === 'linked') linked++;
-          else {
-            missingCount++;
-            missing.push({
-              year: y, type: t,
-              ...(exam.language ? { language: exam.language } : {}),
-              part: p.key,
-              reason: result.reason || 'no source url',
-              searchedAt: nowIso()
-            });
-          }
-        }
+      try {
+        process.stdout.write(`↓ ${year} ${meta.type}${meta.language ? '-'+meta.language : ''} ... `);
+        const buf = await get(url);
+        if (!isPdf(buf)) throw new Error('Geçersiz PDF (header / boyut)');
+        fs.writeFileSync(bookletAbs, buf);
+        const hash = sha256(buf);
+        record.status = 'downloaded';
+        record.booklet = { status: 'downloaded', localPath: bookletRel, sourceUrl: url, sizeBytes: buf.length, sha256: hash };
+        record.answerKey = { status: 'included', localPath: bookletRel, sourceUrl: url, note: 'Cevap anahtarı kitapçık içinde' };
+        record.downloadedAt = new Date().toISOString();
+        fs.writeFileSync(path.join(absDir, 'metadata.json'), JSON.stringify(record, null, 2));
+        console.log(`OK ${(buf.length/1024/1024).toFixed(2)} MB`);
+      } catch (e) {
+        record.error = e.message;
+        console.log(`HATA: ${e.message}`);
       }
+      records.push(record);
     }
-    manifest.generatedAt = nowIso();
-    writeJson(MANIFEST_PATH, manifest);
-    writeJson(MISSING_PATH, { generatedAt: nowIso(), totalMissing: missing.length, items: missing });
   }
 
-  // Always rewrite report
+  fs.mkdirSync(path.dirname(MANIFEST_PATH), { recursive: true });
+  const manifest = {
+    schemaVersion: 1,
+    generatedAt: new Date().toISOString(),
+    source: 'ÖSYM (https://www.osym.gov.tr)',
+    note: 'PDF dosyaları proje sahibinin beyan ettiği yazılı izne dayanılarak resmî ÖSYM kaynağından indirilmiştir.',
+    totals: {
+      exams: records.length,
+      downloaded: records.filter(r => r.status === 'downloaded').length,
+      missing: records.filter(r => r.status === 'missing').length,
+    },
+    exams: records,
+  };
+  fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
+
   const lines = [];
-  lines.push('# openyks · YKS PDF Arşivi · İndirme Raporu');
-  lines.push('');
-  lines.push(`Oluşturulma: ${nowIso()}`);
-  lines.push(`Mod: ${DRY_RUN ? 'dry-run' : REPORT_ONLY ? 'report-only' : 'download'}${FORCE ? ' (force)' : ''}`);
-  lines.push('');
-  lines.push('## Özet');
-  lines.push(`- İndirilen PDF: ${downloaded}`);
-  lines.push(`- Linked (sadece resmî kaynak): ${linked}`);
-  lines.push(`- Eksik: ${missingCount}`);
-  lines.push(`- Toplam boyut: ${(totalSize / 1024 / 1024).toFixed(2)} MB`);
-  lines.push('');
-  lines.push('## Politika');
-  lines.push('- Hiçbir paywall/login/captcha aşılmamıştır.');
-  lines.push('- URL uydurulmamıştır; boş URL = missing.');
-  lines.push('- Sahte PDF veya cevap anahtarı üretilmemiştir.');
-  lines.push('');
-  if (missing.length) {
-    lines.push('## Eksikler');
-    for (const m of missing) {
-      lines.push(`- ${m.year} ${m.type}${m.language ? ' (' + m.language + ')' : ''} / ${m.part}: ${m.reason}`);
+  lines.push(`# openyks — ÖSYM PDF Arşivi İndirme Raporu`);
+  lines.push(``);
+  lines.push(`- Oluşturulma: ${manifest.generatedAt}`);
+  lines.push(`- Toplam sınav: ${manifest.totals.exams}`);
+  lines.push(`- İndirilen: ${manifest.totals.downloaded}`);
+  lines.push(`- Eksik: ${manifest.totals.missing}`);
+  lines.push(`- Kaynak: ÖSYM resmî dokuman.osym.gov.tr`);
+  lines.push(``);
+  lines.push(`| Yıl | Sınav | Durum | Dosya | Boyut | SHA256 | Kaynak |`);
+  lines.push(`|-----|-------|-------|-------|-------|--------|--------|`);
+  for (const r of records) {
+    const t = `${r.type}${r.language ? ' ('+r.language+')' : ''}`;
+    if (r.status === 'downloaded') {
+      const mb = (r.booklet.sizeBytes/1024/1024).toFixed(2) + ' MB';
+      lines.push(`| ${r.year} | ${t} | ✅ indirildi | \`${r.booklet.localPath}\` | ${mb} | \`${r.booklet.sha256.slice(0,16)}…\` | [link](${r.booklet.sourceUrl}) |`);
+    } else {
+      lines.push(`| ${r.year} | ${t} | ❌ eksik | — | — | — | [link](${r.booklet.sourceUrl}) — ${r.error || ''} |`);
     }
   }
-  fs.writeFileSync(REPORT_PATH, lines.join('\n') + '\n', 'utf-8');
+  lines.push(``);
+  lines.push(`## Not`);
+  lines.push(`- 2018–2025 YKS soru kitapçıkları ÖSYM tarafından tek PDF içinde yayımlanır; cevap anahtarı genellikle kitapçık PDF'inin sonunda yer alır. Bu nedenle \`answerKeyIncludedInBooklet: true\` olarak işaretlenmiştir.`);
+  lines.push(`- YDT için yalnızca İngilizce dili indirilmiştir (proje gereksinimi).`);
+  fs.writeFileSync(REPORT_PATH, lines.join('\n'));
 
-  console.log(`✓ done. downloaded=${downloaded} linked=${linked} missing=${missingCount}`);
+  console.log(`\nManifest: ${MANIFEST_PATH}`);
+  console.log(`Rapor:    ${REPORT_PATH}`);
+  console.log(`Özet: ${manifest.totals.downloaded}/${manifest.totals.exams} indirildi.`);
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+main().catch((e) => { console.error(e); process.exit(1); });

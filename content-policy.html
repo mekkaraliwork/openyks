@@ -1,76 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#070b14" />
-<title>openyks · İçerik politikası</title>
-<meta name="description" content="openyks içerik politikası — kaynak, izin beyanı ve kaldırma talepleri." />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235b8cff'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='ui-sans-serif,system-ui' font-size='30' font-weight='800' fill='white'%3Eo%3C/text%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/shared.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>İçerik Politikası · openyks</title>
 <style>
-  .doc{max-width:780px;margin:0 auto;padding:24px}
-  .doc h2{margin:24px 0 8px;font-size:20px;letter-spacing:-.01em}
-  .doc p,.doc li{color:var(--muted-2);font-size:15px;line-height:1.7}
-  .doc ul{padding-left:20px}
-  .doc .card{margin-top:24px}
-  .doc small{color:var(--dim)}
+  body{margin:0;background:#06070d;color:#eef0fb;font-family:ui-sans-serif,system-ui,"Inter",sans-serif;line-height:1.6}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px}
+  h1{background:linear-gradient(135deg,#5b8cff,#7c5cff,#b14bff);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:32px}
+  h2{margin-top:32px;color:#cfd4ea}
+  a{color:#7c5cff}
+  .back{color:#8a91ad;text-decoration:none}
+  code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-size:13px}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <a href="index.html" class="logo"><span class="logo-mark">o</span>openyks</a>
-  <div class="nav-links">
-    <a href="app.html">Panel</a>
-    <a href="exams.html">Arşiv</a>
-    <a href="content-policy.html" class="active">İçerik Politikası</a>
-  </div>
-</nav>
+<div class="wrap">
+  <a class="back" href="exams.html">← Arşive dön</a>
+  <h1>İçerik Politikası</h1>
+  <p>openyks, YKS hazırlığını tek yerde toplayan açık kaynak bir platformdur.</p>
 
-<header class="hero">
-  <span class="badge">Şeffaflık · Kaynak · Kaldırma</span>
-  <h1 style="margin-top:12px">İçerik <span class="grad">politikası</span></h1>
-  <p>openyks öğrenci odaklı, açık kaynak bir YKS hazırlık platformudur. Bu sayfa, sunulan içeriklerin kaynağı, izin durumu ve kaldırma süreci hakkındadır.</p>
-</header>
+  <h2>ÖSYM içerikleri</h2>
+  <p>Bu arşivde yer alan TYT, AYT ve YDT İngilizce soru kitapçıkları ile cevap anahtarları, ÖSYM tarafından <a href="https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html" target="_blank" rel="noopener">YKS Çıkmış Sorular</a> sayfasında kamuya açık olarak yayımlanmış resmî PDF dosyalarıdır.</p>
+  <p>Proje sahibi, ÖSYM içeriklerinin bu platformda barındırılması için <strong>yazılı izin aldığını beyan etmektedir</strong>. Yine de telif ÖSYM'ye aittir: <em>"Sorular, Fikir ve Sanat Eserleri Kanunu kapsamında eser niteliğinde olup, telif hakları ÖSYM'ye aittir."</em></p>
 
-<main class="doc">
-  <section class="card">
-    <h2>1. Açık kaynak ve eğitim amaçlı kullanım</h2>
-    <p>openyks ticari değildir. Tüm kod tabanı ve veri yapısı şeffaftır; öğrencilerin geçmiş YKS sınavlarına kolay erişimi hedeflenir.</p>
+  <h2>Şeffaflık</h2>
+  <ul>
+    <li>Tüm PDF dosyaları yalnızca resmî <code>dokuman.osym.gov.tr</code> kaynağından indirilmiştir.</li>
+    <li>Hiçbir paywall, captcha veya erişim koruması atlatılmamıştır.</li>
+    <li>Her PDF için kaynak URL, dosya boyutu ve SHA-256 hash değeri <code>data/exams/osym-yks-manifest.json</code> içinde saklanır.</li>
+    <li>İndirme raporu: <a href="data/exams/download-report.md">download-report.md</a></li>
+  </ul>
 
-    <h2>2. Kaynak bilgisi</h2>
-    <p>Listelenen tüm soru kitapçığı ve cevap anahtarı kayıtları kaynak URL'leri (resmî ÖSYM) ile birlikte saklanır. Sahte kaynak, uydurma link veya sahte cevap anahtarı kullanılmaz.</p>
-
-    <h2>3. İzin beyanı</h2>
-    <p>Proje sahibi, ÖSYM içeriklerinin platformda listelenmesi için yazılı izin aldığını beyan etmiştir. İzin kapsamı dışında içerik eklenmez.</p>
-
-    <h2>4. Kaldırma talepleri</h2>
-    <p>Hak sahipleri, herhangi bir içeriğin kaldırılmasını talep edebilir. Talepler aşağıdaki yollarla iletilebilir:</p>
-    <ul>
-      <li>Proje GitHub deposunda issue açarak</li>
-      <li>Depo yöneticisine doğrudan e-posta göndererek</li>
-    </ul>
-    <p>Talepler 7 iş günü içinde değerlendirilir ve uygun bulunan içerikler kaldırılır.</p>
-
-    <h2>5. Hata bildirimi</h2>
-    <p>İçeriklerde yanlış kaynak, kırık link veya hatalı metadata fark ederseniz lütfen issue açın. Düzeltmeler şeffaf bir şekilde yapılır.</p>
-
-    <h2>6. Sorumluluk reddi</h2>
-    <p>openyks hiçbir başarı, net veya sıralama garantisi vermez. Sunulan veriler yalnızca çalışmaya yol göstermek içindir. Resmî bilgiler için <a href="https://www.osym.gov.tr" target="_blank" rel="noopener noreferrer">osym.gov.tr</a> esas alınmalıdır.</p>
-
-    <h2>7. Erişim politikası</h2>
-    <p>openyks hiçbir paywall, login veya captcha korumasını aşmaz. Yalnızca kamuya açık veya açıkça izin verilmiş kaynaklardan içerik listeler.</p>
-
-    <p><small>Bu sayfa hukuki danışmanlık değildir. Resmî ihtilaf durumlarında ilgili kurumlara başvurulması esastır.</small></p>
-  </section>
-</main>
-
-<footer class="footer">
-  <span>© openyks · açık kaynak</span>
-  <span><a href="exams.html">Arşive dön</a> · <a href="app.html">Panel</a></span>
-</footer>
+  <h2>Kaldırma talebi</h2>
+  <p>İçerik sahibi veya yetkilisi iseniz ve bir kaydın kaldırılmasını istiyorsanız, lütfen proje deposunda issue açın. Talep doğrulandığında ilgili kayıt 48 saat içinde kaldırılır.</p>
+</div>
 </body>
 </html>

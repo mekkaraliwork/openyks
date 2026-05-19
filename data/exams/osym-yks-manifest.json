@@ -1,959 +1,589 @@
 {
-  "version": "1.0.0",
-  "generatedAt": "2026-05-19T00:13:57Z",
-  "sourcePolicy": {
-    "permissionDeclared": true,
-    "permissionNote": "Proje sahibi ÖSYM içerikleri için yazılı izin aldığını beyan etmiştir.",
-    "sourcePreference": "Official ÖSYM sources first",
-    "copyrightNotice": "İçerikler kaynak ve izin politikası çerçevesinde listelenir. Hak sahibi talepleri dikkate alınır ve içerik kaldırılabilir.",
-    "contact": "İçerik kaldırma talepleri için repo üzerinden issue açabilirsiniz."
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-19T00:26:48.664Z",
+  "source": "ÖSYM (https://www.osym.gov.tr)",
+  "note": "PDF dosyaları proje sahibinin beyan ettiği yazılı izne dayanılarak resmî ÖSYM kaynağından indirilmiştir.",
+  "totals": {
+    "exams": 24,
+    "downloaded": 24,
+    "missing": 0
   },
-  "years": [
-    {
-      "year": 2018,
-      "exams": [
-        {
-          "type": "TYT",
-          "title": "2018 TYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2018/tyt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2018/tyt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "TYT",
-            "ÖSYM",
-            "2018"
-          ]
-        },
-        {
-          "type": "AYT",
-          "title": "2018 AYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2018/ayt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2018/ayt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "AYT",
-            "ÖSYM",
-            "2018"
-          ]
-        },
-        {
-          "type": "YDT",
-          "title": "2018 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
-          "language": "en",
-          "languageLabel": "İngilizce",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2018/ydt/en/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2018/ydt/en/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "YDT",
-            "İngilizce",
-            "ÖSYM",
-            "2018"
-          ]
-        }
-      ]
-    },
-    {
-      "year": 2019,
-      "exams": [
-        {
-          "type": "TYT",
-          "title": "2019 TYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2019/tyt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2019/tyt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "TYT",
-            "ÖSYM",
-            "2019"
-          ]
-        },
-        {
-          "type": "AYT",
-          "title": "2019 AYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2019/ayt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2019/ayt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "AYT",
-            "ÖSYM",
-            "2019"
-          ]
-        },
-        {
-          "type": "YDT",
-          "title": "2019 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
-          "language": "en",
-          "languageLabel": "İngilizce",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2019/ydt/en/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2019/ydt/en/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "YDT",
-            "İngilizce",
-            "ÖSYM",
-            "2019"
-          ]
-        }
-      ]
-    },
-    {
-      "year": 2020,
-      "exams": [
-        {
-          "type": "TYT",
-          "title": "2020 TYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2020/tyt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2020/tyt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "TYT",
-            "ÖSYM",
-            "2020"
-          ]
-        },
-        {
-          "type": "AYT",
-          "title": "2020 AYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2020/ayt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2020/ayt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "AYT",
-            "ÖSYM",
-            "2020"
-          ]
-        },
-        {
-          "type": "YDT",
-          "title": "2020 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
-          "language": "en",
-          "languageLabel": "İngilizce",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2020/ydt/en/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2020/ydt/en/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "YDT",
-            "İngilizce",
-            "ÖSYM",
-            "2020"
-          ]
-        }
-      ]
-    },
-    {
-      "year": 2021,
-      "exams": [
-        {
-          "type": "TYT",
-          "title": "2021 TYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2021/tyt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2021/tyt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "TYT",
-            "ÖSYM",
-            "2021"
-          ]
-        },
-        {
-          "type": "AYT",
-          "title": "2021 AYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2021/ayt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2021/ayt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "AYT",
-            "ÖSYM",
-            "2021"
-          ]
-        },
-        {
-          "type": "YDT",
-          "title": "2021 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
-          "language": "en",
-          "languageLabel": "İngilizce",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2021/ydt/en/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2021/ydt/en/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "YDT",
-            "İngilizce",
-            "ÖSYM",
-            "2021"
-          ]
-        }
-      ]
-    },
-    {
-      "year": 2022,
-      "exams": [
-        {
-          "type": "TYT",
-          "title": "2022 TYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2022/tyt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2022/tyt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "TYT",
-            "ÖSYM",
-            "2022"
-          ]
-        },
-        {
-          "type": "AYT",
-          "title": "2022 AYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2022/ayt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2022/ayt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "AYT",
-            "ÖSYM",
-            "2022"
-          ]
-        },
-        {
-          "type": "YDT",
-          "title": "2022 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
-          "language": "en",
-          "languageLabel": "İngilizce",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2022/ydt/en/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2022/ydt/en/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "YDT",
-            "İngilizce",
-            "ÖSYM",
-            "2022"
-          ]
-        }
-      ]
-    },
-    {
-      "year": 2023,
-      "exams": [
-        {
-          "type": "TYT",
-          "title": "2023 TYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2023/tyt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2023/tyt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "TYT",
-            "ÖSYM",
-            "2023"
-          ]
-        },
-        {
-          "type": "AYT",
-          "title": "2023 AYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2023/ayt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2023/ayt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "AYT",
-            "ÖSYM",
-            "2023"
-          ]
-        },
-        {
-          "type": "YDT",
-          "title": "2023 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
-          "language": "en",
-          "languageLabel": "İngilizce",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2023/ydt/en/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2023/ydt/en/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "YDT",
-            "İngilizce",
-            "ÖSYM",
-            "2023"
-          ]
-        }
-      ]
-    },
-    {
-      "year": 2024,
-      "exams": [
-        {
-          "type": "TYT",
-          "title": "2024 TYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2024/tyt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2024/tyt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "TYT",
-            "ÖSYM",
-            "2024"
-          ]
-        },
-        {
-          "type": "AYT",
-          "title": "2024 AYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2024/ayt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2024/ayt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "AYT",
-            "ÖSYM",
-            "2024"
-          ]
-        },
-        {
-          "type": "YDT",
-          "title": "2024 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
-          "language": "en",
-          "languageLabel": "İngilizce",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2024/ydt/en/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2024/ydt/en/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "YDT",
-            "İngilizce",
-            "ÖSYM",
-            "2024"
-          ]
-        }
-      ]
-    },
-    {
-      "year": 2025,
-      "exams": [
-        {
-          "type": "TYT",
-          "title": "2025 TYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2025/tyt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2025/tyt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "TYT",
-            "ÖSYM",
-            "2025"
-          ]
-        },
-        {
-          "type": "AYT",
-          "title": "2025 AYT Soru Kitapçığı ve Cevap Anahtarı",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2025/ayt/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2025/ayt/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "AYT",
-            "ÖSYM",
-            "2025"
-          ]
-        },
-        {
-          "type": "YDT",
-          "title": "2025 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
-          "language": "en",
-          "languageLabel": "İngilizce",
-          "booklet": {
-            "status": "missing",
-            "localPath": "assets/exams/2025/ydt/en/booklet.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "answerKey": {
-            "status": "missing",
-            "localPath": "assets/exams/2025/ydt/en/answer-key.pdf",
-            "sourceUrl": "",
-            "sizeBytes": 0
-          },
-          "tags": [
-            "YKS",
-            "YDT",
-            "İngilizce",
-            "ÖSYM",
-            "2025"
-          ]
-        }
-      ]
-    }
-  ],
-  "missing": [
+  "exams": [
     {
       "year": 2018,
       "type": "TYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2018,
-      "type": "TYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2018 YKS TYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2018/tyt/booklet.pdf",
+        "sourceUrl": "http://dokuman.osym.gov.tr/pdfdokuman/2018/YKS/TYT_01072018.pdf",
+        "sizeBytes": 2957765,
+        "sha256": "e6ba4a863d26ecfb1461a2c65cca19bbc3c5c28b230b30fa0c5ac1f8c3df1d0b"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2018/tyt/booklet.pdf",
+        "sourceUrl": "http://dokuman.osym.gov.tr/pdfdokuman/2018/YKS/TYT_01072018.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:02.538Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2018,
       "type": "AYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2018 YKS AYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2018/ayt/booklet.pdf",
+        "sourceUrl": "http://dokuman.osym.gov.tr/pdfdokuman/2018/YKS/AYT_01072018.pdf",
+        "sizeBytes": 4446037,
+        "sha256": "67d52ea48b59ab3bc7bc26f448e6aa6ff6fc234a0f431206810557101f3bead7"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2018/ayt/booklet.pdf",
+        "sourceUrl": "http://dokuman.osym.gov.tr/pdfdokuman/2018/YKS/AYT_01072018.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:05.834Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2018,
-      "type": "AYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2018,
       "type": "YDT",
-      "language": "en",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2018,
-      "type": "YDT",
-      "language": "en",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": "ing",
+      "title": "2018 YKS YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2018/ydt/en/booklet.pdf",
+        "sourceUrl": "http://dokuman.osym.gov.tr/pdfdokuman/2018/YKS/YDTING01072018.pdf",
+        "sizeBytes": 1433443,
+        "sha256": "72b7fcbc1797a18d3ccb433de34cab326cecc1ba3fd3de1504814f29a3a65e9d"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2018/ydt/en/booklet.pdf",
+        "sourceUrl": "http://dokuman.osym.gov.tr/pdfdokuman/2018/YKS/YDTING01072018.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:07.039Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2019,
       "type": "TYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2019 YKS TYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2019/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/tyt_yks_2019_web.pdf",
+        "sizeBytes": 2579091,
+        "sha256": "e6c3e63b42aa50a2eb1358f6a3dad83db289e5670a83d0dad9c1a38cdfce98e5"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2019/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/tyt_yks_2019_web.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:08.901Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2019,
-      "type": "TYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2019,
       "type": "AYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2019,
-      "type": "AYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2019,
-      "type": "YDT",
-      "language": "en",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2019 YKS AYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2019/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/ayt_yks_2019_web.pdf",
+        "sizeBytes": 2667257,
+        "sha256": "afd69553835bc01def6dcb19092e04f61b17806c90364907d89dc777389663b7"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2019/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/ayt_yks_2019_web.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:10.818Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2019,
       "type": "YDT",
-      "language": "en",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": "ing",
+      "title": "2019 YKS YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2019/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/ydt_ingilizce_yks_2019_web.pdf",
+        "sizeBytes": 864312,
+        "sha256": "39c1b5e18bde54a0182285e1c6df0d30453b345308a5fd01d51762b6d64f238b"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2019/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/ydt_ingilizce_yks_2019_web.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:11.713Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2020,
       "type": "TYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2020 YKS TYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2020/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YKS/TSK/tyt_yks_2020.pdf",
+        "sizeBytes": 2757423,
+        "sha256": "cb221da0c0e474d1958426635c1a607349a4b76a27e27f0b0ea69528c857883d"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2020/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YKS/TSK/tyt_yks_2020.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:13.696Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2020,
-      "type": "TYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2020,
       "type": "AYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2020,
-      "type": "AYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2020,
-      "type": "YDT",
-      "language": "en",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2020 YKS AYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2020/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YKS/TSK/ayt_yks_2020.pdf",
+        "sizeBytes": 1670470,
+        "sha256": "b52b16f78038adb24e75b2c3f978488fade964b956dd6c48fc703c8bcd442d0d"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2020/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YKS/TSK/ayt_yks_2020.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:14.993Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2020,
       "type": "YDT",
-      "language": "en",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": "ing",
+      "title": "2020 YKS YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2020/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YKS/TSK/ydt_ingilizce_yks_2020.pdf",
+        "sizeBytes": 859111,
+        "sha256": "f1a9ee4870e27dbc190a18ebd135008bae00e9f57756a2452592aedbb1070a47"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2020/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YKS/TSK/ydt_ingilizce_yks_2020.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:15.906Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2021,
       "type": "TYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2021 YKS TYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2021/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YKS/TSK/tyt_yks_2021.pdf",
+        "sizeBytes": 4390618,
+        "sha256": "c9220ca9ffdee89ba220bf3cdd3f34ce02f8c0e2b1a3a20b42d7ff810f73d95b"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2021/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YKS/TSK/tyt_yks_2021.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:19.048Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2021,
-      "type": "TYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2021,
       "type": "AYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2021,
-      "type": "AYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2021,
-      "type": "YDT",
-      "language": "en",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2021 YKS AYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2021/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YKS/TSK/ayt_yks_2021.pdf",
+        "sizeBytes": 3583105,
+        "sha256": "9d8cb3953aa3274e05bbd46fdb85f9060ae63f3ef76143765593764f5ccc0ede"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2021/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YKS/TSK/ayt_yks_2021.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:21.637Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2021,
       "type": "YDT",
-      "language": "en",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": "ing",
+      "title": "2021 YKS YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2021/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YKS/TSK/ydt_ingilizce_yks_2021.pdf",
+        "sizeBytes": 1034435,
+        "sha256": "aa71160f0bc91e93bcc28c07e9a80ba7cb1435c9127a321ee504d12ca6035071"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2021/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YKS/TSK/ydt_ingilizce_yks_2021.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:23.263Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2022,
       "type": "TYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2022 YKS TYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2022/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YKS/TSK/yks_2022_tyt.pdf",
+        "sizeBytes": 2435504,
+        "sha256": "52dcd45bdcc11b9ce170f473b1a9a73a7fbe3c025cba74cbd5a3ccb99a1384cf"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2022/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YKS/TSK/yks_2022_tyt.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:25.014Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2022,
-      "type": "TYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2022,
       "type": "AYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2022,
-      "type": "AYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2022,
-      "type": "YDT",
-      "language": "en",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2022 YKS AYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2022/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YKS/TSK/yks_2022_ayt.pdf",
+        "sizeBytes": 3314127,
+        "sha256": "632e68e34ab2d07aa947a5a56413021659773905d95a63dd9fb50833ad8066e5"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2022/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YKS/TSK/yks_2022_ayt.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:27.363Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2022,
       "type": "YDT",
-      "language": "en",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": "ing",
+      "title": "2022 YKS YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2022/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YKS/TSK/yks_2022_ydt_ingilizce.pdf",
+        "sizeBytes": 927049,
+        "sha256": "901df45af4f2feba0d2eca3671cdb1ac178d1c181bd5e68f33498ff76bf25839"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2022/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YKS/TSK/yks_2022_ydt_ingilizce.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:28.307Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2023,
       "type": "TYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2023 YKS TYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2023/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YKS/TSK/yks_tyt_2023_kitapcik_T23ky.pdf",
+        "sizeBytes": 3217472,
+        "sha256": "0dc9541d881211c8fa0b27524a061b37e61838c13d3f7bf4feceee549e45d1ff"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2023/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YKS/TSK/yks_tyt_2023_kitapcik_T23ky.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:30.615Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2023,
-      "type": "TYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2023,
       "type": "AYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2023,
-      "type": "AYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2023,
-      "type": "YDT",
-      "language": "en",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2023 YKS AYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2023/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YKS/TSK/yks_ayt_2023_kitapcik_g5A2H.pdf",
+        "sizeBytes": 3932021,
+        "sha256": "48c8106ad2f67f0dbef099a48aa7364f4708c52ef62497365c6d1c821e2c07c2"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2023/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YKS/TSK/yks_ayt_2023_kitapcik_g5A2H.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:33.411Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2023,
       "type": "YDT",
-      "language": "en",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": "ing",
+      "title": "2023 YKS YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2023/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YKS/TSK/yks_ydt_ing_2023_kitapcik_Sp72a.pdf",
+        "sizeBytes": 1011947,
+        "sha256": "ed425253df0b82bacca8d33bce359a2002d654a53343e1b0c586b78555491f2e"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2023/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YKS/TSK/yks_ydt_ing_2023_kitapcik_Sp72a.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:34.493Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2024,
       "type": "TYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2024 YKS TYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2024/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YKS/TSK/yks_tyt_2024_kitapcik_T24kt.pdf",
+        "sizeBytes": 5439411,
+        "sha256": "5b517eba3f596ed1e9d2073e84023696c40a1f6a2347d7db0aa8c20ece63b64e"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2024/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YKS/TSK/yks_tyt_2024_kitapcik_T24kt.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:38.356Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2024,
+      "type": "AYT",
+      "language": null,
+      "title": "2024 YKS AYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2024/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YKS/TSK/yks_ayt_2024_kitapcik_ts85k.pdf",
+        "sizeBytes": 4390291,
+        "sha256": "6c6d14a245c13fd28f9461845e0d9d375709ed6dcbc9dfb10a2db3219742393b"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2024/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YKS/TSK/yks_ayt_2024_kitapcik_ts85k.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:41.505Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
+    },
+    {
+      "year": 2024,
+      "type": "YDT",
+      "language": "ing",
+      "title": "2024 YKS YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2024/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YKS/TSK/yks_ydt_ing_2024_kitapcik_Sp865a.pdf",
+        "sizeBytes": 1123416,
+        "sha256": "ba4245cfbbdb9d3e441ceae65bb019ccfc814541e414a00dd75a182aefe2cdfd"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2024/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YKS/TSK/yks_ydt_ing_2024_kitapcik_Sp865a.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:42.417Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
+    },
+    {
+      "year": 2025,
       "type": "TYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2024,
-      "type": "AYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2024,
-      "type": "AYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2024,
-      "type": "YDT",
-      "language": "en",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2024,
-      "type": "YDT",
-      "language": "en",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2025,
-      "type": "TYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2025,
-      "type": "TYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2025 YKS TYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2025/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YKS/TSK/yks_tyt_2025_kitapcik_d250.pdf",
+        "sizeBytes": 3416251,
+        "sha256": "f14164d59354dc92098b3c1722e44380b1465e6ebbef7bcaed1c0cbd8e15a1b9"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2025/tyt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YKS/TSK/yks_tyt_2025_kitapcik_d250.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:44.896Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2025,
       "type": "AYT",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2025,
-      "type": "AYT",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": null,
+      "title": "2025 YKS AYT Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2025/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YKS/TSK/yks_ayt_2025_kitapcik_st12.pdf",
+        "sizeBytes": 3964264,
+        "sha256": "2534d350a418fc62327cb8f08b2a2f9a50bc2fcc790a1e80e2c5eb96ef48df37"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2025/ayt/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YKS/TSK/yks_ayt_2025_kitapcik_st12.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:47.818Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     },
     {
       "year": 2025,
       "type": "YDT",
-      "language": "en",
-      "part": "booklet",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
-    },
-    {
-      "year": 2025,
-      "type": "YDT",
-      "language": "en",
-      "part": "answerKey",
-      "reason": "Official source URL not provided yet",
-      "searchedAt": "2026-05-19T00:13:57Z"
+      "language": "ing",
+      "title": "2025 YKS YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+      "status": "downloaded",
+      "booklet": {
+        "status": "downloaded",
+        "localPath": "assets/exams/2025/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YKS/TSK/yks_ydt_ing_2025_kitapcik_Si42.pdf",
+        "sizeBytes": 1048033,
+        "sha256": "05d6cf9658a2c93e8134e463fe344e57342e62e7f1cebc0a0b18a239a98b5ec3"
+      },
+      "answerKey": {
+        "status": "included",
+        "localPath": "assets/exams/2025/ydt/en/booklet.pdf",
+        "sourceUrl": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YKS/TSK/yks_ydt_ing_2025_kitapcik_Si42.pdf",
+        "note": "Cevap anahtarı kitapçık içinde"
+      },
+      "answerKeyIncludedInBooklet": true,
+      "downloadedAt": "2026-05-19T00:26:48.664Z",
+      "source": "ÖSYM",
+      "sourcePage": "https://www.osym.gov.tr/tr,15164/yks-cikmis-sorular.html"
     }
   ]
 }

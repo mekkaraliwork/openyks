@@ -1,130 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#070b14" />
-<title>openyks · Sınav görüntüleyici</title>
-<meta name="description" content="ÖSYM YKS PDF görüntüleyici — kaynak, yıl, sınav türü ve cevap anahtarı bilgileriyle." />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235b8cff'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='ui-sans-serif,system-ui' font-size='30' font-weight='800' fill='white'%3Eo%3C/text%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/shared.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PDF Görüntüleyici · openyks</title>
 <style>
-  .viewer-wrap{max-width:1280px;margin:0 auto;padding:16px 20px 40px;display:grid;grid-template-columns:320px 1fr;gap:18px}
-  .meta-panel h2{margin:0 0 4px;font-size:22px;letter-spacing:-.01em}
-  .meta-panel .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
-  .meta-list{display:flex;flex-direction:column;gap:10px;font-size:13px}
-  .meta-list .row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--border)}
-  .meta-list .row span:first-child{color:var(--muted)}
-  .meta-list .row span:last-child{color:var(--text);text-align:right;font-weight:500;word-break:break-word;max-width:60%}
-  .pdf-frame{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);min-height:80vh;overflow:hidden;position:relative}
-  .pdf-frame iframe,.pdf-frame embed{width:100%;height:80vh;border:0;display:block;background:#0a0f1d}
-  .fallback{padding:40px 24px;text-align:center;color:var(--muted-2)}
-  .fallback h3{color:var(--text);margin:0 0 8px}
-  .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-  @media (max-width:900px){.viewer-wrap{grid-template-columns:1fr}.pdf-frame iframe{height:70vh}}
+  :root{--bg:#06070d;--fg:#eef0fb;--muted:#8a91ad;--border:rgba(255,255,255,.1);--grad:linear-gradient(135deg,#5b8cff,#7c5cff)}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,"Inter",sans-serif}
+  header{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--border);background:rgba(13,15,26,.85);backdrop-filter:blur(10px)}
+  header a.back{color:var(--muted);padding:8px 12px;border:1px solid var(--border);border-radius:10px;text-decoration:none;font-size:14px}
+  header a.back:hover{color:var(--fg)}
+  header h1{font-size:15px;font-weight:600;margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  header .actions{display:flex;gap:8px}
+  .btn{padding:8px 12px;border-radius:10px;font-size:13px;text-decoration:none;border:1px solid var(--border);color:var(--fg)}
+  .btn.primary{background:var(--grad);border-color:transparent;color:#0a0c18;font-weight:600}
+  main{height:calc(100vh - 56px);background:#0a0c18}
+  iframe{width:100%;height:100%;border:0;background:#222}
+  .msg{padding:40px;text-align:center;color:var(--muted)}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <a href="index.html" class="logo"><span class="logo-mark">o</span>openyks</a>
-  <div class="nav-links">
-    <a href="app.html">Panel</a>
-    <a href="exams.html" class="active">Arşiv</a>
-    <a href="content-policy.html">İçerik Politikası</a>
-  </div>
-</nav>
-
-<main class="viewer-wrap">
-  <aside class="card meta-panel" id="meta">
-    <h2>Yükleniyor…</h2>
-    <p class="sub">Sınav bilgisi alınıyor.</p>
-  </aside>
-  <section class="pdf-frame" id="pdfArea">
-    <div class="fallback"><h3>Yükleniyor</h3><p>Manifest bekleniyor.</p></div>
-  </section>
-</main>
-
-<footer class="footer">
-  <span>© openyks</span>
-  <span><a href="exams.html">← Arşive dön</a> · <a href="content-policy.html">İçerik politikası</a></span>
-</footer>
-
+<header>
+  <a class="back" href="exams.html">← Arşiv</a>
+  <h1 id="title">Yükleniyor…</h1>
+  <div class="actions" id="actions"></div>
+</header>
+<main id="main"><div class="msg">Manifest okunuyor…</div></main>
 <script>
-(function(){
-  const params = new URLSearchParams(location.search);
-  // sanitize
-  const year = (params.get('year')||'').replace(/[^0-9]/g,'').slice(0,4);
-  const type = (params.get('type')||'').replace(/[^A-Za-z]/g,'').toUpperCase().slice(0,5);
-  const lang = (params.get('lang')||'').replace(/[^a-z]/g,'').slice(0,4);
-  const meta = document.getElementById('meta');
-  const pdfArea = document.getElementById('pdfArea');
+const qs = new URLSearchParams(location.search);
+const want = { year: Number(qs.get('year')), type: (qs.get('type')||'').toUpperCase(), language: qs.get('language')||null };
 
-  function safe(s){ return String(s||'').replace(/[<>&"]/g, c=>({ '<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c])); }
-
-  function fail(msg){
-    meta.innerHTML = `<h2>Sınav bulunamadı</h2><p class="sub">${safe(msg)}</p><div class="btnrow"><a class="btn primary" href="exams.html">Arşive dön</a></div>`;
-    pdfArea.innerHTML = `<div class="fallback"><h3>Görüntülenecek bir kaynak yok</h3><p>Lütfen arşivden geçerli bir sınav seçin.</p></div>`;
+(async () => {
+  let m;
+  try {
+    const r = await fetch('data/exams/osym-yks-manifest.json',{cache:'no-store'});
+    m = await r.json();
+  } catch(e){
+    document.getElementById('main').innerHTML = '<div class="msg">Manifest yüklenemedi.</div>'; return;
   }
-
-  async function init(){
-    if (!year || !type){ fail('Eksik parametre. Örn: ?year=2023&type=TYT'); return; }
-    let manifest;
-    try {
-      const r = await fetch('data/exams/osym-yks-manifest.json', {cache:'no-cache'});
-      if (!r.ok) throw new Error('HTTP '+r.status);
-      manifest = await r.json();
-    } catch (e){ fail('Manifest yüklenemedi: '+e.message); return; }
-
-    const yb = (manifest.years||[]).find(y => y.year === Number(year));
-    if (!yb){ fail(year+' yılı için kayıt yok.'); return; }
-    const exam = (yb.exams||[]).find(ex => ex.type === type && (type!=='YDT' || (ex.language||'en') === (lang||'en')));
-    if (!exam){ fail(year+' '+type+' kaydı bulunamadı.'); return; }
-
-    const b = exam.booklet || {}, a = exam.answerKey || {};
-    const overall = b.status === 'downloaded' ? 'İndirildi' : b.status === 'linked' ? 'Resmî kaynak' : 'Eksik';
-    meta.innerHTML = `
-      <h2>${safe(year)} ${safe(type)}${exam.languageLabel ? ' · '+safe(exam.languageLabel) : ''}</h2>
-      <p class="sub">${safe(exam.title||'')}</p>
-      <div class="meta-list">
-        <div class="row"><span>Durum</span><span>${safe(overall)}</span></div>
-        <div class="row"><span>Kitapçık</span><span>${safe(b.status||'—')}</span></div>
-        <div class="row"><span>Cevap anahtarı</span><span>${safe(a.status||'—')}</span></div>
-        <div class="row"><span>Kaynak</span><span>${b.sourceUrl ? `<a href="${safe(b.sourceUrl)}" target="_blank" rel="noopener noreferrer">resmî link</a>` : '—'}</span></div>
-        <div class="row"><span>Boyut</span><span>${b.sizeBytes ? (b.sizeBytes/1024/1024).toFixed(2)+' MB' : '—'}</span></div>
-      </div>
-      <div class="btnrow">
-        ${b.status==='downloaded' ? `<a class="btn primary" href="${safe(b.localPath)}" download>İndir</a>` : ''}
-        ${b.sourceUrl ? `<a class="btn" href="${safe(b.sourceUrl)}" target="_blank" rel="noopener noreferrer">Resmî kaynak</a>` : ''}
-        ${a.status==='downloaded' ? `<a class="btn" href="${safe(a.localPath)}" target="_blank" rel="noopener noreferrer">Cevap anahtarı</a>` : (a.sourceUrl ? `<a class="btn" href="${safe(a.sourceUrl)}" target="_blank" rel="noopener noreferrer">Cevap (resmî)</a>` : '')}
-        <a class="btn ghost" href="exams.html">← Arşiv</a>
-      </div>
-    `;
-
-    // Only open files known by manifest — no arbitrary URLs from query.
-    let src = null;
-    if (b.status === 'downloaded' && b.localPath) src = b.localPath;
-
-    if (src) {
-      pdfArea.innerHTML = `<iframe title="${safe(year)} ${safe(type)} PDF" src="${safe(src)}#view=FitH" loading="lazy"></iframe>`;
-    } else if (b.sourceUrl) {
-      pdfArea.innerHTML = `<div class="fallback">
-        <h3>PDF yerel olarak yok</h3>
-        <p>Bu sınav için yalnızca resmî kaynak linki mevcut. Tarayıcıda gömülü gösterilemiyor.</p>
-        <div class="btnrow" style="justify-content:center">
-          <a class="btn primary" href="${safe(b.sourceUrl)}" target="_blank" rel="noopener noreferrer">Resmî kaynakta aç</a>
-        </div>
-      </div>`;
-    } else {
-      pdfArea.innerHTML = `<div class="fallback">
-        <h3>Kaynak bekleniyor</h3>
-        <p>Bu sınav için henüz resmî bir kaynak eklenmedi. Sahte link veya dosya kullanılmaz.</p>
-      </div>`;
-    }
+  const rec = m.exams.find(x => x.year===want.year && x.type===want.type && (x.language||null)===(want.language||null));
+  if(!rec){ document.getElementById('main').innerHTML = '<div class="msg">Bu sınav manifestte yok.</div>'; return; }
+  if(rec.status !== 'downloaded' || !rec.booklet.localPath){
+    document.getElementById('main').innerHTML = '<div class="msg">Bu PDF henüz indirilmemiş. Lütfen <code>npm run exams:download</code> komutunu çalıştırın.</div>'; return;
   }
-  init();
+  // Sadece manifest'te kayıtlı local yola izin ver
+  const safe = rec.booklet.localPath.replace(/^\/+/, '');
+  if(!/^assets\/exams\//.test(safe)){
+    document.getElementById('main').innerHTML = '<div class="msg">Geçersiz dosya yolu.</div>'; return;
+  }
+  document.getElementById('title').textContent = rec.title;
+  document.getElementById('actions').innerHTML =
+    `<a class="btn" href="${safe}" download>İndir</a>`+
+    `<a class="btn" href="${rec.booklet.sourceUrl}" target="_blank" rel="noopener">Kaynak</a>`+
+    `<a class="btn primary" href="${safe}" target="_blank" rel="noopener">Yeni sekmede aç</a>`;
+  document.getElementById('main').innerHTML = `<iframe src="${safe}#view=FitH" title="${rec.title}"></iframe>`;
 })();
 </script>
 </body>
