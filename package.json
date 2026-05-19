@@ -1,0 +1,14 @@
+{
+  "name": "openyks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "openyks — açık kaynak YKS hazırlık platformu. Statik frontend + JSON manifest.",
+  "scripts": {
+    "exams:download": "node scripts/download-osym-pdfs.js",
+    "exams:check": "node scripts/download-osym-pdfs.js --dry-run",
+    "exams:report": "node scripts/download-osym-pdfs.js --report-only"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

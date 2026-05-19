@@ -1,0 +1,15 @@
+{
+  "year": 2024,
+  "type": "AYT",
+  "status": "not_extracted_yet",
+  "note": "PDF arşivi planlandı. Soru bazlı ayrıştırma sonraki aşamada yapılacak.",
+  "plannedSchema": {
+    "id": "ayt-2024-001",
+    "lesson": "",
+    "topic": "",
+    "subtopic": "",
+    "answer": "",
+    "image": "",
+    "solution": ""
+  }
+}

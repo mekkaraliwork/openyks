@@ -1,0 +1,58 @@
+/* openyks · paylaşılan tasarım dili (landing/app uyumlu) */
+:root{
+  --bg:#070b14; --bg-2:#0b1020;
+  --panel:rgba(16,22,40,.7); --panel-2:rgba(20,28,52,.55); --panel-3:rgba(24,32,58,.5);
+  --border:rgba(255,255,255,.08); --border-2:rgba(255,255,255,.14); --border-3:rgba(255,255,255,.2);
+  --text:#e6ecff; --muted:#8a93b2; --muted-2:#aeb6d3; --dim:#5b6585;
+  --brand:#5b8cff; --brand-2:#7c5cff; --cyan:#22d3ee; --violet:#a78bfa;
+  --green:#34d399; --amber:#fbbf24; --danger:#fb7185; --rose:#f472b6;
+  --radius:18px; --radius-sm:12px; --radius-lg:24px;
+  --shadow:0 20px 60px -20px rgba(20,30,80,.6), 0 8px 24px -10px rgba(0,0,0,.5);
+  --grad: linear-gradient(135deg,#5b8cff 0%,#7c5cff 50%,#22d3ee 100%);
+  --grad-soft: linear-gradient(135deg,rgba(91,140,255,.18),rgba(124,92,255,.18) 50%,rgba(34,211,238,.18));
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:
+    radial-gradient(1100px 600px at 85% -10%,rgba(124,92,255,.18),transparent 60%),
+    radial-gradient(900px 500px at -10% 10%,rgba(34,211,238,.12),transparent 55%),
+    radial-gradient(700px 500px at 50% 110%,rgba(91,140,255,.12),transparent 60%),
+    var(--bg);
+  background-attachment:fixed; color:var(--text); min-height:100vh;
+  -webkit-font-smoothing:antialiased; line-height:1.5;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+::selection{background:rgba(124,92,255,.4)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1180px;margin:0 auto}
+.nav .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:18px}
+.logo-mark{width:32px;height:32px;border-radius:9px;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:900}
+.nav-links{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nav-links a{padding:8px 14px;border-radius:10px;color:var(--muted-2);font-size:14px;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--text);background:var(--panel-3)}
+.nav-links a.active{color:var(--text);background:var(--panel)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;font-weight:600;font-size:14px;transition:.2s;border:1px solid var(--border-2);background:var(--panel);color:var(--text)}
+.btn:hover{border-color:var(--border-3);background:var(--panel-2);transform:translateY(-1px)}
+.btn.primary{background:var(--grad);border:0;color:#fff;box-shadow:0 8px 24px -8px rgba(91,140,255,.6)}
+.btn.primary:hover{transform:translateY(-1px);box-shadow:0 12px 30px -8px rgba(91,140,255,.7)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:10px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.hero{padding:40px 24px 12px;max-width:1180px;margin:0 auto}
+.hero h1{font-size:clamp(28px,4vw,44px);margin:0 0 10px;letter-spacing:-.02em;font-weight:800;line-height:1.1}
+.hero h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted-2);margin:0;max-width:680px;font-size:16px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid var(--border-2);background:var(--panel-3);color:var(--muted-2)}
+.badge.ok{color:#a7f3d0;border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.1)}
+.badge.warn{color:#fde68a;border-color:rgba(251,191,36,.35);background:rgba(251,191,36,.1)}
+.badge.miss{color:#fecdd3;border-color:rgba(251,113,133,.35);background:rgba(251,113,133,.1)}
+.badge.link{color:#bae6fd;border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.1)}
+.footer{max-width:1180px;margin:40px auto;padding:24px;color:var(--dim);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border)}
+.footer a{color:var(--muted-2)}
+.footer a:hover{color:var(--text)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}

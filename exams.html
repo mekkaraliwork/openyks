@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#070b14" />
+<title>openyks · Geçmiş YKS Arşivi (2018–2025)</title>
+<meta name="description" content="2018–2025 TYT, AYT ve YDT soru kitapçıkları ve cevap anahtarlarını kaynak bilgisiyle birlikte incele." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235b8cff'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='ui-sans-serif,system-ui' font-size='30' font-weight='800' fill='white'%3Eo%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/shared.css">
+<style>
+  .filters{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;margin:20px 0 22px}
+  .filters input,.filters select{
+    background:var(--panel-2);border:1px solid var(--border-2);color:var(--text);
+    padding:11px 14px;border-radius:12px;font:inherit;font-size:14px;min-width:140px;
+  }
+  .filters input{min-width:0}
+  .filters input::placeholder{color:var(--dim)}
+  .stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .exam-card{display:flex;flex-direction:column;gap:12px;transition:.2s;border:1px solid var(--border)}
+  .exam-card:hover{border-color:var(--border-2);transform:translateY(-2px);box-shadow:var(--shadow)}
+  .exam-card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .exam-card .year{font-size:32px;font-weight:800;line-height:1;letter-spacing:-.02em;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .exam-card .type{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .exam-card h3{margin:0;font-size:15px;font-weight:600;line-height:1.35}
+  .exam-card .actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px;border-top:1px solid var(--border)}
+  .exam-card .actions .btn{flex:1;justify-content:center;min-width:auto}
+  .empty{padding:60px 20px;text-align:center;color:var(--muted)}
+  .legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:12px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:8px;height:8px;border-radius:50%}
+  .policy-note{margin-top:18px;padding:14px 16px;border-left:3px solid var(--brand);background:var(--panel-3);border-radius:10px;font-size:13px;color:var(--muted-2)}
+  @media (max-width:720px){
+    .filters{grid-template-columns:1fr 1fr}
+    .filters input{grid-column:1/-1}
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="logo"><span class="logo-mark">o</span>openyks</a>
+  <div class="nav-links">
+    <a href="app.html">Panel</a>
+    <a href="exams.html" class="active">Arşiv</a>
+    <a href="content-policy.html">İçerik Politikası</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="badge">2018 – 2025 · TYT · AYT · YDT</span>
+  <h1 style="margin-top:12px">Geçmiş YKS <span class="grad">arşivi</span></h1>
+  <p>ÖSYM tarafından yayımlanmış soru kitapçıkları ve cevap anahtarları — yıl, sınav türü ve durum filtreleriyle. Yerel kopya yoksa resmî kaynak linki açılır. Sahte içerik veya uydurma link kullanılmaz.</p>
+</header>
+
+<main class="wrap">
+  <section aria-label="Filtreler">
+    <div class="filters">
+      <input id="q" type="search" placeholder="Ara: yıl, sınav, kitapçık…" aria-label="Arama" />
+      <select id="fYear" aria-label="Yıl">
+        <option value="">Tüm yıllar</option>
+      </select>
+      <select id="fType" aria-label="Sınav türü">
+        <option value="">Tüm sınavlar</option>
+        <option value="TYT">TYT</option>
+        <option value="AYT">AYT</option>
+        <option value="YDT">YDT</option>
+      </select>
+      <select id="fStatus" aria-label="Durum">
+        <option value="">Tüm durumlar</option>
+        <option value="downloaded">İndirildi</option>
+        <option value="linked">Resmî link</option>
+        <option value="missing">Eksik</option>
+      </select>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="legend" aria-hidden="true">
+      <span><i style="background:#34d399"></i>İndirildi</span>
+      <span><i style="background:#22d3ee"></i>Resmî kaynak</span>
+      <span><i style="background:#fb7185"></i>Eksik / kaynak bekleniyor</span>
+    </div>
+  </section>
+
+  <section id="grid" class="grid" aria-live="polite"></section>
+  <div id="empty" class="empty" hidden>Bu filtreyle eşleşen sınav yok.</div>
+
+  <div class="policy-note">
+    Bu arşiv, ÖSYM içeriklerine yazılı izinli erişim beyanına dayanır. Hak sahibi talepleri üzerine içerikler kaldırılır.
+    Eksik veya hatalı kayıtları <a href="content-policy.html">içerik politikası</a> sayfasından bildirebilirsiniz.
+  </div>
+</main>
+
+<footer class="footer">
+  <span>© openyks · açık kaynak</span>
+  <span><a href="content-policy.html">İçerik politikası</a> · <a href="app.html">Panele dön</a></span>
+</footer>
+
+<script>
+(function(){
+  const $ = (s) => document.querySelector(s);
+  const grid = $('#grid'), empty = $('#empty'), stats = $('#stats');
+  const fQ = $('#q'), fYear = $('#fYear'), fType = $('#fType'), fStatus = $('#fStatus');
+  let manifest = null;
+  let items = []; // flattened
+
+  function statusBadge(s){
+    if (s==='downloaded') return '<span class="badge ok">İndirildi</span>';
+    if (s==='linked')     return '<span class="badge link">Resmî kaynak</span>';
+    if (s==='missing')    return '<span class="badge miss">Eksik</span>';
+    return '<span class="badge warn">'+s+'</span>';
+  }
+
+  function overallStatus(exam){
+    const s = exam.booklet?.status;
+    if (s==='downloaded') return 'downloaded';
+    if (s==='linked') return 'linked';
+    return 'missing';
+  }
+
+  function safe(s){ return String(s||'').replace(/[<>&"]/g, c=>({ '<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c])); }
+
+  function actionFor(part, exam){
+    const p = exam[part];
+    if (!p) return '';
+    const label = part==='booklet' ? 'Kitapçık' : 'Cevap';
+    if (p.status==='downloaded') {
+      return `<a class="btn sm primary" href="${safe(p.localPath)}" target="_blank" rel="noopener noreferrer">${label} aç</a>`;
+    }
+    if (p.status==='linked' && p.sourceUrl) {
+      return `<a class="btn sm" href="${safe(p.sourceUrl)}" target="_blank" rel="noopener noreferrer">${label} (resmî)</a>`;
+    }
+    return `<button class="btn sm" disabled aria-disabled="true" title="Kaynak bekleniyor">${label} ·  bekleniyor</button>`;
+  }
+
+  function viewerLink(exam){
+    const params = new URLSearchParams({ year: exam._year, type: exam.type });
+    if (exam.language) params.set('lang', exam.language);
+    return `exam-viewer.html?${params.toString()}`;
+  }
+
+  function render(){
+    const q = fQ.value.trim().toLowerCase();
+    const y = fYear.value, t = fType.value, st = fStatus.value;
+    const filtered = items.filter(e => {
+      if (y && String(e._year) !== y) return false;
+      if (t && e.type !== t) return false;
+      if (st && overallStatus(e) !== st) return false;
+      if (q){
+        const hay = `${e._year} ${e.type} ${e.title||''} ${(e.tags||[]).join(' ')} ${e.languageLabel||''}`.toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+
+    const counts = { downloaded:0, linked:0, missing:0 };
+    items.forEach(e => counts[overallStatus(e)]++);
+    stats.innerHTML = `
+      <span class="badge">${items.length} sınav</span>
+      <span class="badge ok">${counts.downloaded} indirildi</span>
+      <span class="badge link">${counts.linked} resmî link</span>
+      <span class="badge miss">${counts.missing} eksik</span>`;
+
+    if (!filtered.length) {
+      grid.innerHTML = ''; empty.hidden = false; return;
+    }
+    empty.hidden = true;
+    grid.innerHTML = filtered.map(e => `
+      <article class="card exam-card" aria-label="${safe(e._year)} ${safe(e.type)}">
+        <div class="top">
+          <div>
+            <div class="type">${safe(e.type)}${e.languageLabel ? ' · '+safe(e.languageLabel) : ''}</div>
+            <div class="year">${safe(e._year)}</div>
+          </div>
+          ${statusBadge(overallStatus(e))}
+        </div>
+        <h3>${safe(e.title || (e._year+' '+e.type+' Soru Kitapçığı'))}</h3>
+        <div class="actions">
+          <a class="btn sm" href="${viewerLink(e)}">Görüntüle</a>
+          ${actionFor('booklet', e)}
+          ${actionFor('answerKey', e)}
+        </div>
+      </article>
+    `).join('');
+  }
+
+  async function load(){
+    try {
+      const res = await fetch('data/exams/osym-yks-manifest.json', { cache:'no-cache' });
+      if (!res.ok) throw new Error('manifest yüklenemedi ('+res.status+')');
+      manifest = await res.json();
+    } catch (e) {
+      grid.innerHTML = '';
+      empty.hidden = false;
+      empty.innerHTML = 'Manifest yüklenemedi: '+safe(e.message)+'<br><small>data/exams/osym-yks-manifest.json dosyasını kontrol edin.</small>';
+      return;
+    }
+    const years = new Set();
+    items = [];
+    (manifest.years||[]).forEach(yb => {
+      years.add(yb.year);
+      (yb.exams||[]).forEach(ex => items.push({ ...ex, _year: yb.year }));
+    });
+    [...years].sort((a,b)=>b-a).forEach(y => {
+      const o = document.createElement('option'); o.value = y; o.textContent = y; fYear.appendChild(o);
+    });
+    [fQ,fYear,fType,fStatus].forEach(el => el.addEventListener('input', render));
+    render();
+  }
+  load();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "year": 2021,
+  "type": "YDT",
+  "language": "en",
+  "status": "not_extracted_yet",
+  "note": "PDF arşivi planlandı. Soru bazlı ayrıştırma sonraki aşamada yapılacak.",
+  "plannedSchema": {
+    "id": "ydt-2021-en-001",
+    "lesson": "",
+    "topic": "",
+    "subtopic": "",
+    "answer": "",
+    "image": "",
+    "solution": ""
+  }
+}

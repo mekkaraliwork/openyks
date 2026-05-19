@@ -1,0 +1,959 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-05-19T00:13:57Z",
+  "sourcePolicy": {
+    "permissionDeclared": true,
+    "permissionNote": "Proje sahibi ÖSYM içerikleri için yazılı izin aldığını beyan etmiştir.",
+    "sourcePreference": "Official ÖSYM sources first",
+    "copyrightNotice": "İçerikler kaynak ve izin politikası çerçevesinde listelenir. Hak sahibi talepleri dikkate alınır ve içerik kaldırılabilir.",
+    "contact": "İçerik kaldırma talepleri için repo üzerinden issue açabilirsiniz."
+  },
+  "years": [
+    {
+      "year": 2018,
+      "exams": [
+        {
+          "type": "TYT",
+          "title": "2018 TYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2018/tyt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2018/tyt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "TYT",
+            "ÖSYM",
+            "2018"
+          ]
+        },
+        {
+          "type": "AYT",
+          "title": "2018 AYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2018/ayt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2018/ayt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "AYT",
+            "ÖSYM",
+            "2018"
+          ]
+        },
+        {
+          "type": "YDT",
+          "title": "2018 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+          "language": "en",
+          "languageLabel": "İngilizce",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2018/ydt/en/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2018/ydt/en/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "YDT",
+            "İngilizce",
+            "ÖSYM",
+            "2018"
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2019,
+      "exams": [
+        {
+          "type": "TYT",
+          "title": "2019 TYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2019/tyt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2019/tyt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "TYT",
+            "ÖSYM",
+            "2019"
+          ]
+        },
+        {
+          "type": "AYT",
+          "title": "2019 AYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2019/ayt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2019/ayt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "AYT",
+            "ÖSYM",
+            "2019"
+          ]
+        },
+        {
+          "type": "YDT",
+          "title": "2019 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+          "language": "en",
+          "languageLabel": "İngilizce",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2019/ydt/en/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2019/ydt/en/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "YDT",
+            "İngilizce",
+            "ÖSYM",
+            "2019"
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "exams": [
+        {
+          "type": "TYT",
+          "title": "2020 TYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2020/tyt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2020/tyt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "TYT",
+            "ÖSYM",
+            "2020"
+          ]
+        },
+        {
+          "type": "AYT",
+          "title": "2020 AYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2020/ayt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2020/ayt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "AYT",
+            "ÖSYM",
+            "2020"
+          ]
+        },
+        {
+          "type": "YDT",
+          "title": "2020 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+          "language": "en",
+          "languageLabel": "İngilizce",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2020/ydt/en/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2020/ydt/en/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "YDT",
+            "İngilizce",
+            "ÖSYM",
+            "2020"
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2021,
+      "exams": [
+        {
+          "type": "TYT",
+          "title": "2021 TYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2021/tyt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2021/tyt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "TYT",
+            "ÖSYM",
+            "2021"
+          ]
+        },
+        {
+          "type": "AYT",
+          "title": "2021 AYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2021/ayt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2021/ayt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "AYT",
+            "ÖSYM",
+            "2021"
+          ]
+        },
+        {
+          "type": "YDT",
+          "title": "2021 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+          "language": "en",
+          "languageLabel": "İngilizce",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2021/ydt/en/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2021/ydt/en/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "YDT",
+            "İngilizce",
+            "ÖSYM",
+            "2021"
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "exams": [
+        {
+          "type": "TYT",
+          "title": "2022 TYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2022/tyt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2022/tyt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "TYT",
+            "ÖSYM",
+            "2022"
+          ]
+        },
+        {
+          "type": "AYT",
+          "title": "2022 AYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2022/ayt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2022/ayt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "AYT",
+            "ÖSYM",
+            "2022"
+          ]
+        },
+        {
+          "type": "YDT",
+          "title": "2022 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+          "language": "en",
+          "languageLabel": "İngilizce",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2022/ydt/en/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2022/ydt/en/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "YDT",
+            "İngilizce",
+            "ÖSYM",
+            "2022"
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "exams": [
+        {
+          "type": "TYT",
+          "title": "2023 TYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2023/tyt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2023/tyt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "TYT",
+            "ÖSYM",
+            "2023"
+          ]
+        },
+        {
+          "type": "AYT",
+          "title": "2023 AYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2023/ayt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2023/ayt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "AYT",
+            "ÖSYM",
+            "2023"
+          ]
+        },
+        {
+          "type": "YDT",
+          "title": "2023 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+          "language": "en",
+          "languageLabel": "İngilizce",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2023/ydt/en/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2023/ydt/en/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "YDT",
+            "İngilizce",
+            "ÖSYM",
+            "2023"
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "exams": [
+        {
+          "type": "TYT",
+          "title": "2024 TYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2024/tyt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2024/tyt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "TYT",
+            "ÖSYM",
+            "2024"
+          ]
+        },
+        {
+          "type": "AYT",
+          "title": "2024 AYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2024/ayt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2024/ayt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "AYT",
+            "ÖSYM",
+            "2024"
+          ]
+        },
+        {
+          "type": "YDT",
+          "title": "2024 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+          "language": "en",
+          "languageLabel": "İngilizce",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2024/ydt/en/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2024/ydt/en/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "YDT",
+            "İngilizce",
+            "ÖSYM",
+            "2024"
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "exams": [
+        {
+          "type": "TYT",
+          "title": "2025 TYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2025/tyt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2025/tyt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "TYT",
+            "ÖSYM",
+            "2025"
+          ]
+        },
+        {
+          "type": "AYT",
+          "title": "2025 AYT Soru Kitapçığı ve Cevap Anahtarı",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2025/ayt/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2025/ayt/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "AYT",
+            "ÖSYM",
+            "2025"
+          ]
+        },
+        {
+          "type": "YDT",
+          "title": "2025 YDT (İngilizce) Soru Kitapçığı ve Cevap Anahtarı",
+          "language": "en",
+          "languageLabel": "İngilizce",
+          "booklet": {
+            "status": "missing",
+            "localPath": "assets/exams/2025/ydt/en/booklet.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "answerKey": {
+            "status": "missing",
+            "localPath": "assets/exams/2025/ydt/en/answer-key.pdf",
+            "sourceUrl": "",
+            "sizeBytes": 0
+          },
+          "tags": [
+            "YKS",
+            "YDT",
+            "İngilizce",
+            "ÖSYM",
+            "2025"
+          ]
+        }
+      ]
+    }
+  ],
+  "missing": [
+    {
+      "year": 2018,
+      "type": "TYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2018,
+      "type": "TYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2018,
+      "type": "AYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2018,
+      "type": "AYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2018,
+      "type": "YDT",
+      "language": "en",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2018,
+      "type": "YDT",
+      "language": "en",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2019,
+      "type": "TYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2019,
+      "type": "TYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2019,
+      "type": "AYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2019,
+      "type": "AYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2019,
+      "type": "YDT",
+      "language": "en",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2019,
+      "type": "YDT",
+      "language": "en",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2020,
+      "type": "TYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2020,
+      "type": "TYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2020,
+      "type": "AYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2020,
+      "type": "AYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2020,
+      "type": "YDT",
+      "language": "en",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2020,
+      "type": "YDT",
+      "language": "en",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2021,
+      "type": "TYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2021,
+      "type": "TYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2021,
+      "type": "AYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2021,
+      "type": "AYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2021,
+      "type": "YDT",
+      "language": "en",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2021,
+      "type": "YDT",
+      "language": "en",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2022,
+      "type": "TYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2022,
+      "type": "TYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2022,
+      "type": "AYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2022,
+      "type": "AYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2022,
+      "type": "YDT",
+      "language": "en",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2022,
+      "type": "YDT",
+      "language": "en",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2023,
+      "type": "TYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2023,
+      "type": "TYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2023,
+      "type": "AYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2023,
+      "type": "AYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2023,
+      "type": "YDT",
+      "language": "en",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2023,
+      "type": "YDT",
+      "language": "en",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2024,
+      "type": "TYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2024,
+      "type": "TYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2024,
+      "type": "AYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2024,
+      "type": "AYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2024,
+      "type": "YDT",
+      "language": "en",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2024,
+      "type": "YDT",
+      "language": "en",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2025,
+      "type": "TYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2025,
+      "type": "TYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2025,
+      "type": "AYT",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2025,
+      "type": "AYT",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2025,
+      "type": "YDT",
+      "language": "en",
+      "part": "booklet",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    },
+    {
+      "year": 2025,
+      "type": "YDT",
+      "language": "en",
+      "part": "answerKey",
+      "reason": "Official source URL not provided yet",
+      "searchedAt": "2026-05-19T00:13:57Z"
+    }
+  ]
+}
